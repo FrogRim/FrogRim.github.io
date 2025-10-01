@@ -7,9 +7,9 @@ toc: true
 comments: true
 math: true
 mermaid: true
-image:
-  path: /assets/img/posts/llm-robot-cover.png
-  alt: LLM-First Robot Control System Architecture
+# image:
+#   path: /assets/img/posts/llm-robot-cover.png
+#   alt: LLM-First Robot Control System Architecture
 ---
 
 <style>
