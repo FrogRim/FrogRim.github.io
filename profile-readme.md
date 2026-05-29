@@ -6,6 +6,12 @@
 |_|   |_| \_\\___/ \____|_| \_\___|_|  |_|
 </pre>
 
+<p align="center">
+  <a href="https://frogrim.github.io/">
+    <img src="https://img.shields.io/badge/OPEN_PORTFOLIO-frogrim.github.io-00E5FF?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=0B1017" alt="Open portfolio: frogrim.github.io" />
+  </a>
+</p>
+
 # 이강림 / FrogRim
 
 실시간 AI, 로보틱스 데이터, 그래픽스/엔진 시스템을 성능 지표로 증명하는 개발자입니다.
