@@ -2,6 +2,12 @@
 
 Dark terminal-style systems portfolio for [FrogRim](https://github.com/FrogRim).
 
+<p align="center">
+  <a href="https://frogrim.github.io/">
+    <img src="https://img.shields.io/badge/OPEN_PORTFOLIO-frogrim.github.io-00E5FF?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=0B1017" alt="Open portfolio: frogrim.github.io" />
+  </a>
+</p>
+
 ```txt
 > site
 https://frogrim.github.io/
