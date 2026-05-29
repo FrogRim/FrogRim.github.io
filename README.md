@@ -1,15 +1,25 @@
 # FrogRim.github.io
 
-GitHub-native portfolio website for [FrogRim](https://github.com/FrogRim).
+Dark terminal-style systems portfolio for [FrogRim](https://github.com/FrogRim).
+
+```txt
+> site
+https://frogrim.github.io/
+
+> identity
+realtime-ai | robotics-data | graphics-engine
+```
 
 ## Structure
 
-- `index.html` - static portfolio shell
-- `portfolio.config.js` - public project data
-- `app.js` - project/filter rendering
-- `styles.css` - responsive GitHub-inspired layout
-- `profile-readme.md` - source draft for `FrogRim/FrogRim` profile README
-- `.github/workflows/pages.yml` - GitHub Pages deployment workflow
+| Path | Purpose |
+| --- | --- |
+| `index.html` | static portfolio shell |
+| `portfolio.config.js` | public project data and metrics |
+| `app.js` | project filters, stack meters, timeline rendering |
+| `styles.css` | dark terminal/system layout |
+| `profile-readme.md` | source draft for `FrogRim/FrogRim` profile README |
+| `.github/workflows/pages.yml` | GitHub Pages deployment workflow |
 
 ## Featured Repositories
 
@@ -22,10 +32,8 @@ GitHub-native portfolio website for [FrogRim](https://github.com/FrogRim).
 
 ## Local Check
 
-Open `index.html` directly in a browser or run a static server:
-
 ```bash
 python -m http.server 8080
 ```
 
-The deployed site is served at https://frogrim.github.io/.
+Open `http://localhost:8080/`.
