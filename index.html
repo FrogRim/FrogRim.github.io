@@ -26,9 +26,9 @@
         <span>FrogRim.sys</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
+        <a href="#cases">cases</a>
         <a href="#projects">projects</a>
-        <a href="#stack">stack</a>
-        <a href="#evidence">evidence</a>
+        <a href="#method">method</a>
         <a href="#contact">contact</a>
       </nav>
     </header>
@@ -52,10 +52,11 @@
             </pre>
             <div class="terminal-lines">
               <p><span>&gt; whoami</span> 이강림 / FrogRim</p>
-              <p><span>&gt; focus</span> realtime-ai | robotics-data | graphics-engine</p>
-              <p><span>&gt; proof</span> latency, schema, replayability, collision-time</p>
+              <p><span>&gt; focus</span> problem-solving | realtime-ai | robotics-data | graphics-engine</p>
+              <p><span>&gt; method</span> frame -> decide -> direct-ai -> verify -> document</p>
             </div>
             <div class="hero-actions">
+              <a href="#cases">case studies</a>
               <a href="https://github.com/FrogRim" target="_blank" rel="noreferrer">github</a>
               <a href="mailto:kangrim1025@gmail.com">email</a>
             </div>
@@ -63,74 +64,51 @@
 
           <div class="signal-panel">
             <p class="eyebrow">SYSTEMS PORTFOLIO</p>
-            <h1 id="heroTitle">실시간 입력부터 제어, 데이터, 렌더링까지 닫는 개발자</h1>
+            <h1 id="heroTitle">문제를 정의하고 AI를 지휘해 검증 가능한 시스템으로 닫는 개발자</h1>
             <p class="lead">
-              제품의 겉모습보다 입력 지연, 구조화 출력, 데이터 품질, 렌더링 비용처럼
-              실제 시스템을 움직이는 지표를 남깁니다.
+              기능을 많이 쌓는 것보다 왜 만들었는지, 어떤 선택을 했는지, AI가 낸 결과를
+              어떻게 검토하고 증명했는지를 기록합니다.
             </p>
-            <dl class="signal-grid">
-              <div>
-                <dt>collision</dt>
-                <dd>847ms -> 126ms</dd>
-              </div>
-              <div>
-                <dt>schema</dt>
-                <dd>JSON 100%</dd>
-              </div>
-              <div>
-                <dt>dataset</dt>
-                <dd>MVP-1 proof</dd>
-              </div>
-              <div>
-                <dt>voice</dt>
-                <dd>WebRTC PTT</dd>
-              </div>
-            </dl>
+            <dl id="proofSignals" class="signal-grid"></dl>
           </div>
         </div>
       </section>
 
       <div class="content-shell">
+        <section id="cases" class="section-block" aria-labelledby="casesTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">CASE STUDIES</p>
+              <h2 id="casesTitle">기능이 아니라 문제해결 과정으로 보는 대표 3개</h2>
+            </div>
+          </div>
+          <div id="caseStudies" class="case-list"></div>
+        </section>
+
         <section id="projects" class="section-block" aria-labelledby="projectsTitle">
           <div class="section-heading">
             <div>
               <p class="eyebrow">PINNED REPOSITORIES</p>
-              <h2 id="projectsTitle">대표 프로젝트 6개</h2>
+              <h2 id="projectsTitle">대표 프로젝트 6개: 문제, 판단, 증거</h2>
             </div>
             <div id="projectFilters" class="filter-row" aria-label="Project filters"></div>
           </div>
           <div id="featuredProjects" class="repo-grid"></div>
         </section>
 
-        <section id="evidence" class="section-block architecture-grid" aria-labelledby="evidenceTitle">
+        <section id="method" class="section-block architecture-grid" aria-labelledby="methodTitle">
           <div>
-            <p class="eyebrow">ARCHITECTURE SIGNAL</p>
-            <h2 id="evidenceTitle">어디에서 엔지니어링 깊이를 보여주는가</h2>
+            <p class="eyebrow">ENGINEERING METHOD</p>
+            <h2 id="methodTitle">무작정 만든 코드가 아니라 설명 가능한 결정의 기록</h2>
           </div>
-          <ol class="signal-chain">
-            <li>
-              <span>01</span>
-              <strong>Realtime path</strong>
-              <p>Browser -> WebRTC -> OpenAI Realtime -> worker report</p>
-            </li>
-            <li>
-              <span>02</span>
-              <strong>Robot data path</strong>
-              <p>XR teleop -> evaluator -> curation -> HDF5 artifact</p>
-            </li>
-            <li>
-              <span>03</span>
-              <strong>Graphics path</strong>
-              <p>Mesh -> AABB/BVH -> BVTT traversal -> profiler</p>
-            </li>
-          </ol>
+          <ol id="principleList" class="signal-chain"></ol>
         </section>
 
         <section id="stack" class="section-block" aria-labelledby="stackTitle">
           <div class="section-heading">
             <div>
               <p class="eyebrow">STACK TRACE</p>
-              <h2 id="stackTitle">반복해서 쓰는 기술 축</h2>
+              <h2 id="stackTitle">점수가 아니라 문제를 푸는 데 반복해서 쓴 기술 축</h2>
             </div>
           </div>
           <div id="stackList" class="stack-list"></div>

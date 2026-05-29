@@ -22,7 +22,7 @@ realtime-ai | robotics-data | graphics-engine
 | --- | --- |
 | `index.html` | static portfolio shell |
 | `portfolio.config.js` | public project data and metrics |
-| `app.js` | project filters, stack meters, timeline rendering |
+| `app.js` | project filters, case studies, stack groups, timeline rendering |
 | `styles.css` | dark terminal/system layout |
 | `profile-readme.md` | source draft for `FrogRim/FrogRim` profile README |
 | `.github/workflows/pages.yml` | GitHub Pages deployment workflow |
