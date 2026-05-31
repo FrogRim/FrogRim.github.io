@@ -9,7 +9,7 @@
 </p>
 
 ```txt
-focus  = realtime-ai | robotics-data | graphics-engine
+focus  = realtime-ai | robotics-data | graphics-engine | agent-tooling
 method = frame problem -> make decision -> direct AI -> verify -> document limits
 proof  = latency, schema compliance, replayability, collision time, run commands
 ```
@@ -32,7 +32,7 @@ proof  = latency, schema compliance, replayability, collision time, run commands
 | [GPU 3D Algorithm](https://github.com/FrogRim/GPU_3DAlgorithm) | brute force collision detection 비용 증가 | AABB/BVH/BVTT 직접 구현과 동일 scene benchmark 비교 | 12,182 triangles, 847ms -> 126ms, accuracy 100% |
 | [LLM-First Robot Control](https://github.com/FrogRim/LLM-First-Robot-Control) | 자연어 의도를 로봇 제어 파라미터로 바꾸는 간극 | LLM 출력을 설명문이 아니라 JSON control contract로 제한 | task success 55.6%, JSON compliance 100% |
 | [UE5 ITD Parser Plugin](https://github.com/FrogRim/UE5-ITD-Parser) | 외부 3D format과 engine mesh contract 불일치 | 완성 importer보다 UFactory extension point와 geometry risk 분석에 집중 | UFactory skeleton, Non-Manifold mitigation notes |
-| [Connect-AAC](https://github.com/FrogRim/Connect-AAC) | AAC 사용자의 느린 입력과 표현 후보 부족 | 큰 터치 타깃, 높은 대비, 한국형 어휘, TTS 중심 Flutter UI | AAC flow, accessibility UI, recommendation concept |
+| [HaltTrace](https://github.com/FrogRim/halttrace) | agent 세션이 멈출 때 원인 추적 맥락이 흩어지는 문제 | enforcement가 아닌 observer-only local event router와 bounded backtrace sink로 제한 | Claude/Codex wrappers, trigger policy, privacy-bounded local storage |
 
 ## How I Use AI
 
@@ -62,9 +62,9 @@ flowchart LR
 ![FastAPI](https://img.shields.io/badge/FastAPI-0b1017?style=flat-square&logo=fastapi&logoColor=00FF88)
 ![C++](https://img.shields.io/badge/C++-0b1017?style=flat-square&logo=cplusplus&logoColor=00E5FF)
 ![OpenAI](https://img.shields.io/badge/OpenAI_Realtime-0b1017?style=flat-square&logo=openai&logoColor=00FF88)
+![Node.js](https://img.shields.io/badge/Node.js-0b1017?style=flat-square&logo=nodedotjs&logoColor=00FF88)
 ![Unreal Engine](https://img.shields.io/badge/Unreal_Engine-0b1017?style=flat-square&logo=unrealengine&logoColor=FFFFFF)
 ![OpenGL](https://img.shields.io/badge/OpenGL-0b1017?style=flat-square&logo=opengl&logoColor=FF4D8D)
-![Flutter](https://img.shields.io/badge/Flutter-0b1017?style=flat-square&logo=flutter&logoColor=00E5FF)
 
 ## Contact
 

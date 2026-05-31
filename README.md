@@ -13,7 +13,7 @@ Dark terminal-style systems portfolio for [FrogRim](https://github.com/FrogRim).
 https://frogrim.github.io/
 
 > identity
-realtime-ai | robotics-data | graphics-engine
+realtime-ai | robotics-data | graphics-engine | agent-tooling
 ```
 
 ## Structure
@@ -34,7 +34,7 @@ realtime-ai | robotics-data | graphics-engine
 3. [ForgeXR](https://github.com/FrogRim/ForgeXR)
 4. [GPU_3DAlgorithm](https://github.com/FrogRim/GPU_3DAlgorithm)
 5. [UE5-ITD-Parser](https://github.com/FrogRim/UE5-ITD-Parser)
-6. [Connect-AAC](https://github.com/FrogRim/Connect-AAC)
+6. [HaltTrace](https://github.com/FrogRim/halttrace)
 
 ## Local Check
 
