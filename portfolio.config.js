@@ -46,8 +46,8 @@ window.PORTFOLIO = {
     },
     {
       label: "Agent tooling",
-      items: ["TypeScript", "Node.js", "Hooks", "Plugin Wrappers", "Markdown Dumps"],
-      usedFor: "coding-agent 세션 관찰, 로컬 backtrace, bounded event store 설계",
+      items: ["TypeScript", "Node.js", "Hooks", "Plugin Wrappers", "Contract Tests"],
+      usedFor: "coding-agent 세션 관찰, Codex/Claude hook adapter, 로컬 backtrace 설계",
     },
   ],
   caseStudies: [
@@ -170,9 +170,9 @@ window.PORTFOLIO = {
       repo: "https://github.com/FrogRim/halttrace",
       description: "coding-agent 세션이 비자발적으로 멈출 때 로컬 Markdown backtrace를 남기는 observability tool.",
       problem: "agent 작업이 host hook/tool/runtime 경계에서 멈추면 원인 추적에 필요한 최근 맥락이 흩어지는 문제",
-      decision: "enforcement gate가 아니라 observer-only local event router와 bounded backtrace sink로 제한",
-      evidence: "Claude/Codex plugin wrappers, trigger policy, privacy-bounded local storage, npm test/typecheck path",
-      stack: ["TypeScript", "Node.js", "Hooks", "Plugin Wrappers", "Markdown"],
+      decision: "observer-only router로 제한하고, Codex dump는 anomaly-bearing apply_patch/MCP/tool-exception 이벤트에만 묶음",
+      evidence: "Codex contract tests, npm test 27/27, trigger policy, privacy-bounded local storage",
+      stack: ["TypeScript", "Node.js", "Hooks", "Contract Tests", "Markdown"],
       language: "TypeScript",
       color: "#00e5ff",
     },

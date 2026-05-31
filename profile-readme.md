@@ -32,7 +32,7 @@ proof  = latency, schema compliance, replayability, collision time, run commands
 | [GPU 3D Algorithm](https://github.com/FrogRim/GPU_3DAlgorithm) | brute force collision detection 비용 증가 | AABB/BVH/BVTT 직접 구현과 동일 scene benchmark 비교 | 12,182 triangles, 847ms -> 126ms, accuracy 100% |
 | [LLM-First Robot Control](https://github.com/FrogRim/LLM-First-Robot-Control) | 자연어 의도를 로봇 제어 파라미터로 바꾸는 간극 | LLM 출력을 설명문이 아니라 JSON control contract로 제한 | task success 55.6%, JSON compliance 100% |
 | [UE5 ITD Parser Plugin](https://github.com/FrogRim/UE5-ITD-Parser) | 외부 3D format과 engine mesh contract 불일치 | 완성 importer보다 UFactory extension point와 geometry risk 분석에 집중 | UFactory skeleton, Non-Manifold mitigation notes |
-| [HaltTrace](https://github.com/FrogRim/halttrace) | agent 세션이 멈출 때 원인 추적 맥락이 흩어지는 문제 | enforcement가 아닌 observer-only local event router와 bounded backtrace sink로 제한 | Claude/Codex wrappers, trigger policy, privacy-bounded local storage |
+| [HaltTrace](https://github.com/FrogRim/halttrace) | agent 세션이 멈출 때 원인 추적 맥락이 흩어지는 문제 | observer-only router로 제한하고 Codex dump는 anomaly-bearing apply_patch/MCP/tool-exception 이벤트에만 묶음 | Codex contract tests, npm test 27/27, trigger policy |
 
 ## How I Use AI
 
