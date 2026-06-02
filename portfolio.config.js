@@ -1,59 +1,133 @@
 window.PORTFOLIO = {
-  filters: ["All", "Realtime AI", "Robotics", "Graphics", "Engine", "Agent Tooling"],
+  filters: ["All", "Agent / Verification", "Product AI", "Robotics / Defense", "Graphics / Engine"],
   proofSignals: [
-    { label: "Problem framing", value: "domain first" },
-    { label: "Engineering judgment", value: "tradeoff logs" },
-    { label: "AI usage", value: "directed + verified" },
-    { label: "Evidence", value: "commands + limits" },
+    { label: "Base", value: "cross-domain systems" },
+    { label: "Differentiator", value: "agent failure proof" },
+    { label: "Method", value: "build -> verify -> limits" },
+    { label: "Evidence", value: "tests + metrics" },
   ],
   operatingPrinciples: [
     {
-      title: "Problem before implementation",
+      title: "AI is directed, not obeyed",
       text:
-        "기능 목록보다 먼저 사용자가 겪는 지연, 데이터 품질, 제어 안정성, 입력 흐름 같은 문제를 정의합니다.",
+        "AI에게 후보를 만들게 하되 latency, scope, security, testability 기준으로 직접 reject/accept합니다.",
     },
     {
-      title: "AI is a reviewer and accelerator",
+      title: "Systems depth stays visible",
       text:
-        "AI가 만든 코드를 그대로 붙이지 않고, 성능/보안/확장성 관점으로 지시하고 검증 가능한 결과만 남깁니다.",
+        "AI/agent 직무가 아니어도 제어 contract, geometry risk, benchmark 조건, data artifact를 먼저 설명할 수 있게 씁니다.",
     },
     {
-      title: "Evidence over claims",
+      title: "Evidence closes the loop",
       text:
-        "수치, 실행 명령, 실패한 선택지, 남은 한계를 같이 기록해서 면접에서 설명 가능한 상태로 만듭니다.",
+        "검증했다는 말 대신 실행 명령, 수치, 실패 조건, known limit을 남겨 면접에서 재현 가능한 설명으로 닫습니다.",
+    },
+  ],
+  roleLenses: [
+    {
+      title: "AI / Agent Engineer",
+      route: "HaltTrace -> LinguaCall -> LLM-First Robot Control",
+      emphasis: "agent/tool boundary, contract tests, AI runtime productization",
+      proof:
+        "HaltTrace를 먼저 보여주고, AI가 실패하는 지점을 hook/router/trigger policy와 test로 어떻게 잡는지 설명합니다.",
+    },
+    {
+      title: "Robotics / Defense / Systems",
+      route: "LLM-First Robot Control -> ForgeXR -> GPU 3D Algorithm -> UE5 ITD Parser",
+      emphasis: "control contract, data quality, geometry risk, performance measurement",
+      proof:
+        "AI를 전면에 세우기보다 제어 파라미터, dataset artifact, BVH/BVTT benchmark, engine mesh contract를 먼저 보여줍니다.",
+    },
+    {
+      title: "Product AI Engineer",
+      route: "LinguaCall -> HaltTrace -> ForgeXR",
+      emphasis: "realtime UX, worker split, launch stack, operational evidence",
+      proof:
+        "사용자 경험 안에서 AI를 어떻게 연결하고, 비동기 처리와 운영 검증을 어디까지 닫았는지 보여줍니다.",
+    },
+  ],
+  evidenceBoard: [
+    {
+      metric: "npm test 27/27",
+      project: "HaltTrace",
+      meaning: "Codex context-only events, apply_patch/MCP/tool-exception triggers, known limits를 contract test로 고정",
+      repo: "https://github.com/FrogRim/halttrace",
+    },
+    {
+      metric: "JSON compliance 100%",
+      project: "LLM-First Robot Control",
+      meaning: "자연어 출력을 설명문이 아니라 로봇 제어 contract로 제한",
+      repo: "https://github.com/FrogRim/LLM-First-Robot-Control",
+    },
+    {
+      metric: "task success 55.6%",
+      project: "LLM-First Robot Control",
+      meaning: "언어 기반 제어 파라미터 변환의 실제 task 성공률을 수치화",
+      repo: "https://github.com/FrogRim/LLM-First-Robot-Control",
+    },
+    {
+      metric: "847ms -> 126ms",
+      project: "GPU 3D Algorithm",
+      meaning: "brute force 충돌 감지 대비 BVTT traversal 성능 개선",
+      repo: "https://github.com/FrogRim/GPU_3DAlgorithm",
+    },
+    {
+      metric: "12,182 triangles",
+      project: "GPU 3D Algorithm",
+      meaning: "동일 scene 조건에서 충돌 후보 탐색 비용을 비교",
+      repo: "https://github.com/FrogRim/GPU_3DAlgorithm",
+    },
+    {
+      metric: "trainer smoke",
+      project: "Robot Data Forge",
+      meaning: "teleoperation trajectory를 HDF5 export와 trainer loader까지 통과시키는 artifact proof",
+      repo: "https://github.com/FrogRim/ForgeXR",
     },
   ],
   stackGroups: [
     {
-      label: "Core systems",
-      items: ["TypeScript", "Python", "C++", "SQL", "CMake"],
-      usedFor: "제품 API, 로봇 데이터 파이프라인, 그래픽스 알고리즘 구현",
+      label: "Agent reliability",
+      items: ["TypeScript", "Node.js", "Hooks", "Contract Tests", "Markdown Dumps"],
+      usedFor: "coding-agent 세션 관찰, Codex/Claude hook adapter, 실패 맥락 backtrace",
     },
     {
-      label: "Realtime AI",
-      items: ["WebRTC", "OpenAI Realtime", "Worker Queue", "Supabase"],
-      usedFor: "브라우저 음성 UX, 세션 관리, 비동기 리포트 생성",
+      label: "Product AI runtime",
+      items: ["React", "WebRTC", "OpenAI Realtime", "Worker Queue", "Supabase"],
+      usedFor: "실시간 음성 UX, 세션 관리, 비동기 리포트 생성, launch stack 축소",
     },
     {
-      label: "Robotics data",
-      items: ["FastAPI", "Isaac Lab", "OpenXR", "HDF5", "Pytest"],
-      usedFor: "trajectory 수집, evaluator, curation, trainer smoke check",
+      label: "Robotics / data",
+      items: ["Python", "FastAPI", "Isaac Lab", "OpenXR", "HDF5"],
+      usedFor: "제어 contract, trajectory 수집, evaluator, curation, trainer smoke check",
     },
     {
       label: "Graphics / engine",
-      items: ["OpenGL", "BVH/BVTT", "Unreal Engine", "UFactory"],
-      usedFor: "충돌 감지 성능 측정, 엔진 importer, geometry risk 분석",
+      items: ["C++", "OpenGL", "BVH/BVTT", "Unreal Engine", "UFactory"],
+      usedFor: "충돌 감지 성능 측정, engine importer, geometry risk 분석",
     },
     {
-      label: "Agent tooling",
-      items: ["TypeScript", "Node.js", "Hooks", "Plugin Wrappers", "Contract Tests"],
-      usedFor: "coding-agent 세션 관찰, Codex/Claude hook adapter, 로컬 backtrace 설계",
+      label: "Verification habits",
+      items: ["Typecheck", "Unit Tests", "Smoke Tests", "Benchmarks", "Known Limits"],
+      usedFor: "AI가 만든 후보를 설명 가능한 결과로 남기기 위한 최소 검증 루프",
     },
   ],
   caseStudies: [
     {
+      title: "HaltTrace",
+      domain: "Agent reliability / verification",
+      repo: "https://github.com/FrogRim/halttrace",
+      problem: "AI agent 세션이 hook/tool/runtime 경계에서 멈추면 원인 추적에 필요한 최근 맥락이 흩어집니다.",
+      method:
+        "Claude/Codex adapter에서 이벤트를 observer-only router로 모으고, trigger policy가 맞을 때만 로컬 Markdown backtrace를 남깁니다.",
+      decision:
+        "enforcement gate처럼 과장하지 않고, Codex dump는 anomaly-bearing apply_patch/MCP/tool-exception 이벤트로 제한했습니다.",
+      aiRecord:
+        "AI에게 hook boundary와 failure trigger를 검토하게 한 뒤, context-only 이벤트와 non-trigger 조건을 contract test로 고정했습니다.",
+      evidence: "tests/codex-contract.test.ts, npm test 27/27, trigger policy, known limits",
+    },
+    {
       title: "LinguaCall",
-      domain: "Realtime AI product",
+      domain: "Product AI runtime",
       repo: "https://github.com/FrogRim/LinguaCall",
       problem: "말하기 연습은 실시간 턴 제어와 학습 리포트가 분리되면 실제 대화처럼 훈련하기 어렵습니다.",
       method:
@@ -65,21 +139,8 @@ window.PORTFOLIO = {
       evidence: "PTT voice path, worker report split, launch smoke commands, scope reduction log",
     },
     {
-      title: "Robot Data Forge",
-      domain: "Robotics data infrastructure",
-      repo: "https://github.com/FrogRim/ForgeXR",
-      problem: "raw teleoperation trajectory만으로는 학습 가능한 데이터인지 판단할 수 없습니다.",
-      method:
-        "trajectory를 task outcome, data quality, curation manifest, HDF5 export, trainer loader smoke로 통과시킵니다.",
-      decision:
-        "정책 성능 향상은 MVP-2로 미루고, MVP-1은 학습 가능한 artifact를 만들 수 있는지에 집중했습니다.",
-      aiRecord:
-        "AI에는 evaluator edge case, schema drift, proof report 누락 여부를 검토하게 하고 pytest/compileall/proof audit로 확인합니다.",
-      evidence: "MVP-1 proof, accepted/rejected manifests, dataset card, trainer loader smoke",
-    },
-    {
       title: "GPU 3D Algorithm",
-      domain: "Graphics performance",
+      domain: "Graphics / systems depth",
       repo: "https://github.com/FrogRim/GPU_3DAlgorithm",
       problem: "삼각형 쌍을 brute force로 비교하면 모델 크기에 따라 충돌 감지 비용이 급격히 증가합니다.",
       method:
@@ -93,8 +154,22 @@ window.PORTFOLIO = {
   ],
   projects: [
     {
+      title: "HaltTrace",
+      lenses: ["Agent / Verification"],
+      year: "2026",
+      status: "MVP",
+      repo: "https://github.com/FrogRim/halttrace",
+      description: "coding-agent 세션이 비자발적으로 멈출 때 로컬 Markdown backtrace를 남기는 observability tool.",
+      problem: "agent 작업이 host hook/tool/runtime 경계에서 멈추면 원인 추적에 필요한 최근 맥락이 흩어지는 문제",
+      decision: "observer-only router로 제한하고 Codex dump는 anomaly-bearing apply_patch/MCP/tool-exception 이벤트에 묶음",
+      evidence: "Codex contract tests, npm test 27/27, trigger policy, known limits",
+      stack: ["TypeScript", "Node.js", "Hooks", "Contract Tests", "Markdown"],
+      language: "TypeScript",
+      color: "#00e5ff",
+    },
+    {
       title: "LinguaCall",
-      category: "Realtime AI",
+      lenses: ["Product AI", "Agent / Verification"],
       year: "2026",
       status: "MVP",
       repo: "https://github.com/FrogRim/LinguaCall",
@@ -108,7 +183,7 @@ window.PORTFOLIO = {
     },
     {
       title: "LLM-First Robot Control",
-      category: "Robotics",
+      lenses: ["Robotics / Defense", "Agent / Verification"],
       year: "2025-2026",
       status: "Thesis",
       repo: "https://github.com/FrogRim/LLM-First-Robot-Control",
@@ -122,7 +197,7 @@ window.PORTFOLIO = {
     },
     {
       title: "Robot Data Forge",
-      category: "Robotics",
+      lenses: ["Robotics / Defense", "Product AI"],
       year: "2026",
       status: "MVP-1",
       repo: "https://github.com/FrogRim/ForgeXR",
@@ -136,7 +211,7 @@ window.PORTFOLIO = {
     },
     {
       title: "GPU 3D Algorithm",
-      category: "Graphics",
+      lenses: ["Graphics / Engine", "Robotics / Defense"],
       year: "2024",
       status: "Solo",
       repo: "https://github.com/FrogRim/GPU_3DAlgorithm",
@@ -150,7 +225,7 @@ window.PORTFOLIO = {
     },
     {
       title: "UE5 ITD Parser Plugin",
-      category: "Engine",
+      lenses: ["Graphics / Engine", "Robotics / Defense"],
       year: "2024",
       status: "Prototype",
       repo: "https://github.com/FrogRim/UE5-ITD-Parser",
@@ -162,30 +237,16 @@ window.PORTFOLIO = {
       language: "C++",
       color: "#ff4d8d",
     },
-    {
-      title: "HaltTrace",
-      category: "Agent Tooling",
-      year: "2026",
-      status: "MVP",
-      repo: "https://github.com/FrogRim/halttrace",
-      description: "coding-agent 세션이 비자발적으로 멈출 때 로컬 Markdown backtrace를 남기는 observability tool.",
-      problem: "agent 작업이 host hook/tool/runtime 경계에서 멈추면 원인 추적에 필요한 최근 맥락이 흩어지는 문제",
-      decision: "observer-only router로 제한하고, Codex dump는 anomaly-bearing apply_patch/MCP/tool-exception 이벤트에만 묶음",
-      evidence: "Codex contract tests, npm test 27/27, trigger policy, privacy-bounded local storage",
-      stack: ["TypeScript", "Node.js", "Hooks", "Contract Tests", "Markdown"],
-      language: "TypeScript",
-      color: "#00e5ff",
-    },
   ],
   timeline: [
     {
       date: "2026",
-      title: "실시간 AI, 로봇 데이터, agent observability",
-      text: "입력 지연, 후처리 분리, 데이터 품질 평가, agent 세션 중단 추적을 제품/데이터/도구 시스템으로 묶었습니다.",
+      title: "Agent reliability와 product AI runtime",
+      text: "HaltTrace와 LinguaCall을 통해 AI agent 실패 관찰, 실시간 음성 UX, worker 분리, 검증 명령을 공개 증거로 정리했습니다.",
     },
     {
       date: "2025",
-      title: "LLM 기반 로봇 제어",
+      title: "LLM 기반 로봇 제어 contract",
       text: "언어 입력을 설명 텍스트가 아니라 제어 파라미터와 검증 가능한 JSON contract로 변환하는 문제를 다뤘습니다.",
     },
     {

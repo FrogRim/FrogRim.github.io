@@ -1,58 +1,47 @@
 # FrogRim / 이강림
 
-문제를 먼저 정의하고, AI를 지휘해 후보를 빠르게 만들고, 직접 검증한 결과만 시스템으로 남기는 개발자입니다.
+AI를 많이 쓰는 사람이 아니라, AI가 낸 결과를 시스템으로 구현하고 실패 지점을 검증 가능한 증거로 닫는 개발자입니다.
 
 <p align="center">
   <a href="https://frogrim.github.io/">
-    <img src="https://img.shields.io/badge/OPEN_PORTFOLIO-frogrim.github.io-00E5FF?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=0B1017" alt="Open portfolio: frogrim.github.io" />
+    <img src="https://img.shields.io/badge/OPEN_FULL_PORTFOLIO-frogrim.github.io-00E5FF?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=0B1017" alt="Open full portfolio: frogrim.github.io" />
   </a>
 </p>
 
 ```txt
-focus  = realtime-ai | robotics-data | graphics-engine | agent-tooling
-method = frame problem -> make decision -> direct AI -> verify -> document limits
-proof  = latency, schema compliance, replayability, collision time, run commands
+role      = AI-native systems builder
+base      = cross-domain generalist with system-level proof
+method    = frame problem -> build system -> verify failure modes -> document limits
+portfolio = https://frogrim.github.io/
 ```
 
-## What I Optimize For
+## How To Read My Work
 
-| Principle | What it means in my projects |
-| --- | --- |
-| Domain problem first | 기능 목록보다 사용자가 겪는 지연, 데이터 품질, 제어 안정성, 입력 흐름 문제를 먼저 씁니다. |
-| Engineering judgment | 대안, 선택 근거, tradeoff, scope cut, 실패 가능성을 README에 남깁니다. |
-| AI as a directed tool | AI가 낸 코드를 그대로 수용하지 않고 성능/보안/확장성 관점으로 검토하고 수정합니다. |
-| Evidence over claims | 실행 명령, 측정 조건, 수치, 한계까지 같이 기록합니다. |
+| Lens | Read first | What I prove |
+| --- | --- | --- |
+| AI / Agent Engineer | HaltTrace -> LinguaCall -> LLM-First Robot Control | agent/tool boundary 이해, contract test, AI 런타임 제품화 |
+| Robotics / Defense / Systems | LLM-First Robot Control -> ForgeXR -> GPU 3D Algorithm -> UE5 ITD Parser | 제어 contract, 데이터 품질, 성능 측정, geometry/engine risk |
+| Product AI Engineer | LinguaCall -> HaltTrace -> ForgeXR | 실시간 UX, 비동기 worker, 운영 가능한 launch stack |
 
 ## Featured Proof Matrix
 
 | Repository | Problem I framed | Decision I made | Verification |
 | --- | --- | --- | --- |
+| [HaltTrace](https://github.com/FrogRim/halttrace) | agent 세션이 멈출 때 원인 추적 맥락이 흩어지는 문제 | observer-only router로 제한하고 Codex dump는 anomaly-bearing apply_patch/MCP/tool-exception 이벤트에 묶음 | Codex contract tests, npm test 27/27, known limits |
 | [LinguaCall](https://github.com/FrogRim/LinguaCall) | 실시간 회화 UX와 학습 리포트가 분리되는 문제 | WebRTC direct voice path, API/worker split, launch stack 축소 | PTT flow, worker report split, launch smoke commands |
+| [LLM-First Robot Control](https://github.com/FrogRim/LLM-First-Robot-Control) | 자연어 의도를 로봇 제어 파라미터로 바꾸는 간극 | LLM 출력을 설명문이 아니라 JSON control contract로 제한 | task success 55.6%, JSON compliance 100% |
 | [Robot Data Forge](https://github.com/FrogRim/ForgeXR) | raw teleoperation trajectory만으로 학습 가능성 판단 불가 | MVP-1은 policy uplift가 아니라 dataset artifact proof로 제한 | curation manifest, HDF5 export, trainer loader smoke |
 | [GPU 3D Algorithm](https://github.com/FrogRim/GPU_3DAlgorithm) | brute force collision detection 비용 증가 | AABB/BVH/BVTT 직접 구현과 동일 scene benchmark 비교 | 12,182 triangles, 847ms -> 126ms, accuracy 100% |
-| [LLM-First Robot Control](https://github.com/FrogRim/LLM-First-Robot-Control) | 자연어 의도를 로봇 제어 파라미터로 바꾸는 간극 | LLM 출력을 설명문이 아니라 JSON control contract로 제한 | task success 55.6%, JSON compliance 100% |
 | [UE5 ITD Parser Plugin](https://github.com/FrogRim/UE5-ITD-Parser) | 외부 3D format과 engine mesh contract 불일치 | 완성 importer보다 UFactory extension point와 geometry risk 분석에 집중 | UFactory skeleton, Non-Manifold mitigation notes |
-| [HaltTrace](https://github.com/FrogRim/halttrace) | agent 세션이 멈출 때 원인 추적 맥락이 흩어지는 문제 | observer-only router로 제한하고 Codex dump는 anomaly-bearing apply_patch/MCP/tool-exception 이벤트에만 묶음 | Codex contract tests, npm test 27/27, trigger policy |
 
-## How I Use AI
+## What I Optimize For
 
-| Use | My control point |
+| Principle | What it means in my projects |
 | --- | --- |
-| Architecture candidate generation | AI에게 후보를 뽑게 한 뒤 latency, 운영비, 구현 복잡도 기준으로 직접 reject/accept합니다. |
-| Code and review acceleration | 생성된 코드는 lint/typecheck/test/smoke command를 통과해야만 남깁니다. |
-| Risk discovery | 보안, schema drift, async worker failure, benchmark 과장 가능성을 AI에게 명시적으로 찾게 합니다. |
-| Documentation | AI가 정리한 문장을 그대로 쓰지 않고, 내가 설명 가능한 decision/tradeoff/evidence 형태로 다시 씁니다. |
-
-## System Map
-
-```mermaid
-flowchart LR
-  A["Domain problem"] --> B["Engineering decision"]
-  B --> C["AI-assisted options"]
-  C --> D["Human review"]
-  D --> E["Verification command"]
-  E --> F["Public README evidence"]
-```
+| AI is directed, not obeyed | AI에게 후보를 만들게 하되 latency, scope, security, testability 기준으로 직접 reject/accept합니다. |
+| Systems depth stays visible | AI/agent 직무가 아니어도 제어 contract, geometry risk, benchmark 조건, data artifact를 먼저 설명할 수 있게 씁니다. |
+| Evidence over claims | "검증했다"는 말 대신 실행 명령, 수치, 실패 조건, known limit을 남깁니다. |
+| Same work, different lens | 한 프로젝트를 agent reliability, product AI, robotics/system engineering 관점에서 다르게 읽히게 정리합니다. |
 
 ## Stack By Problem Class
 
@@ -68,5 +57,5 @@ flowchart LR
 
 ## Contact
 
-- Portfolio: https://frogrim.github.io/
+- Full portfolio: https://frogrim.github.io/
 - Email: kangrim1025@gmail.com

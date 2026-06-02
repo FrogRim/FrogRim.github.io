@@ -1,6 +1,8 @@
 # FrogRim.github.io
 
-Dark terminal-style systems portfolio for [FrogRim](https://github.com/FrogRim).
+Static GitHub Pages portfolio for [FrogRim](https://github.com/FrogRim).
+
+The page positions the work as an AI-native, verification-driven systems portfolio: one core identity, multiple role lenses, and public evidence for each representative project.
 
 <p align="center">
   <a href="https://frogrim.github.io/">
@@ -9,11 +11,14 @@ Dark terminal-style systems portfolio for [FrogRim](https://github.com/FrogRim).
 </p>
 
 ```txt
-> site
+> portfolio
 https://frogrim.github.io/
 
-> identity
-realtime-ai | robotics-data | graphics-engine | agent-tooling
+> role
+AI-native systems builder
+
+> lenses
+agent-reliability | product-ai | robotics-defense | graphics-engine
 ```
 
 ## Structure
@@ -21,20 +26,20 @@ realtime-ai | robotics-data | graphics-engine | agent-tooling
 | Path | Purpose |
 | --- | --- |
 | `index.html` | static portfolio shell |
-| `portfolio.config.js` | public project data and metrics |
-| `app.js` | project filters, case studies, stack groups, timeline rendering |
+| `portfolio.config.js` | public project data, role lenses, evidence board |
+| `app.js` | case studies, role lenses, evidence, filters, stack rendering |
 | `styles.css` | dark terminal/system layout |
 | `profile-readme.md` | source draft for `FrogRim/FrogRim` profile README |
 | `.github/workflows/pages.yml` | GitHub Pages deployment workflow |
 
-## Featured Repositories
+## Representative Repositories
 
-1. [LinguaCall](https://github.com/FrogRim/LinguaCall)
-2. [LLM-First-Robot-Control](https://github.com/FrogRim/LLM-First-Robot-Control)
-3. [ForgeXR](https://github.com/FrogRim/ForgeXR)
-4. [GPU_3DAlgorithm](https://github.com/FrogRim/GPU_3DAlgorithm)
-5. [UE5-ITD-Parser](https://github.com/FrogRim/UE5-ITD-Parser)
-6. [HaltTrace](https://github.com/FrogRim/halttrace)
+1. [HaltTrace](https://github.com/FrogRim/halttrace)
+2. [LinguaCall](https://github.com/FrogRim/LinguaCall)
+3. [LLM-First-Robot-Control](https://github.com/FrogRim/LLM-First-Robot-Control)
+4. [ForgeXR](https://github.com/FrogRim/ForgeXR)
+5. [GPU_3DAlgorithm](https://github.com/FrogRim/GPU_3DAlgorithm)
+6. [UE5-ITD-Parser](https://github.com/FrogRim/UE5-ITD-Parser)
 
 ## Local Check
 

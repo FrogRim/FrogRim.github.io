@@ -69,6 +69,49 @@
     });
   }
 
+  function renderRoleLenses() {
+    const grid = qs("#roleLenses");
+    if (!grid) return;
+    grid.innerHTML = "";
+
+    data.roleLenses.forEach((lens) => {
+      const card = createElement("article", "lens-card");
+      card.append(createElement("h3", "", lens.title));
+      card.append(createElement("p", "lens-route", lens.route));
+
+      const proof = createElement("dl", "lens-proof");
+      [
+        ["emphasis", lens.emphasis],
+        ["proof", lens.proof],
+      ].forEach(([label, value]) => {
+        const group = createElement("div");
+        group.append(createElement("dt", "", label));
+        group.append(createElement("dd", "", value));
+        proof.append(group);
+      });
+
+      card.append(proof);
+      grid.append(card);
+    });
+  }
+
+  function renderEvidenceBoard() {
+    const grid = qs("#evidenceBoard");
+    if (!grid) return;
+    grid.innerHTML = "";
+
+    data.evidenceBoard.forEach((item) => {
+      const card = createElement("article", "evidence-card");
+      card.append(createElement("strong", "", item.metric));
+      card.append(createElement("span", "", item.project));
+      card.append(createElement("p", "", item.meaning));
+      const actions = createElement("div", "action-row");
+      actions.append(createLink("action-button", "Source", item.repo));
+      card.append(actions);
+      grid.append(card);
+    });
+  }
+
   function renderFilters() {
     const filters = qs("#projectFilters");
     filters.innerHTML = "";
@@ -91,7 +134,7 @@
     grid.innerHTML = "";
 
     data.projects
-      .filter((project) => activeFilter === "All" || project.category === activeFilter)
+      .filter((project) => activeFilter === "All" || project.lenses.includes(activeFilter))
       .forEach((project) => {
         const card = createElement("article", "repo-card");
 
@@ -101,6 +144,9 @@
         titleRow.append(title, status);
 
         const description = createElement("p", "repo-description", project.description);
+
+        const lenses = createElement("div", "lens-tags");
+        project.lenses.forEach((lens) => lenses.append(createElement("span", "lens-tag", lens)));
 
         const proof = createElement("dl", "repo-proof");
         [
@@ -127,7 +173,7 @@
         const actions = createElement("div", "action-row");
         actions.append(createLink("action-button action-button-primary", "Repository", project.repo));
 
-        card.append(titleRow, description, proof, stack, footer, actions);
+        card.append(titleRow, description, lenses, proof, stack, footer, actions);
         grid.append(card);
       });
   }
@@ -184,6 +230,8 @@
 
   renderProofSignals();
   renderCaseStudies();
+  renderRoleLenses();
+  renderEvidenceBoard();
   renderFilters();
   renderProjects();
   renderStack();

@@ -6,12 +6,12 @@
     <title>FrogRim / Systems Portfolio</title>
     <meta
       name="description"
-      content="이강림(FrogRim)의 시스템 엔지니어링 포트폴리오. 실시간 AI, 로보틱스 데이터, 그래픽스/엔진, agent tooling 프로젝트를 성능과 검증 지표 중심으로 정리합니다."
+      content="이강림(FrogRim)의 AI-native systems portfolio. AI agent, product AI, robotics, graphics/engine 프로젝트를 직무별 렌즈와 검증 증거 중심으로 정리합니다."
     />
     <meta property="og:title" content="FrogRim / Systems Portfolio" />
     <meta
       property="og:description"
-      content="실시간 AI, 로보틱스 데이터, 그래픽스/엔진, agent tooling 시스템을 검증 지표로 증명하는 개발자."
+      content="AI를 활용해 여러 도메인의 문제를 시스템으로 구현하고 실패 지점을 검증 가능한 증거로 남기는 개발자."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://frogrim.github.io/" />
@@ -27,6 +27,8 @@
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#cases">cases</a>
+        <a href="#lenses">lenses</a>
+        <a href="#evidence">evidence</a>
         <a href="#projects">projects</a>
         <a href="#method">method</a>
         <a href="#contact">contact</a>
@@ -52,8 +54,9 @@
             </pre>
             <div class="terminal-lines">
               <p><span>&gt; whoami</span> 이강림 / FrogRim</p>
-              <p><span>&gt; focus</span> problem-solving | realtime-ai | robotics-data | graphics-engine | agent-tooling</p>
-              <p><span>&gt; method</span> frame -> decide -> direct-ai -> verify -> document</p>
+              <p><span>&gt; base</span> cross-domain systems | AI-native workflow | verification-driven delivery</p>
+              <p><span>&gt; lenses</span> agent-reliability | product-ai | robotics-defense | graphics-engine</p>
+              <p><span>&gt; method</span> frame -> build -> verify failure modes -> document limits</p>
             </div>
             <div class="hero-actions">
               <a href="#cases">case studies</a>
@@ -63,11 +66,11 @@
           </div>
 
           <div class="signal-panel">
-            <p class="eyebrow">SYSTEMS PORTFOLIO</p>
-            <h1 id="heroTitle">문제를 정의하고 AI를 지휘해 검증 가능한 시스템으로 닫는 개발자</h1>
+            <p class="eyebrow">AI-NATIVE SYSTEMS PORTFOLIO</p>
+            <h1 id="heroTitle">AI로 넓게 만들고, 시스템 증거로 깊이를 증명합니다</h1>
             <p class="lead">
-              기능을 많이 쌓는 것보다 왜 만들었는지, 어떤 선택을 했는지, AI가 낸 결과를
-              어떻게 검토하고 증명했는지를 기록합니다.
+              하나의 분야만 고정하지 않습니다. AI agent, 제품 AI, 로보틱스 데이터, 3D/엔진 문제를
+              같은 방식으로 구조화하고, 테스트/수치/한계로 설명 가능한 결과만 남깁니다.
             </p>
             <dl id="proofSignals" class="signal-grid"></dl>
           </div>
@@ -78,18 +81,38 @@
         <section id="cases" class="section-block" aria-labelledby="casesTitle">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">CASE STUDIES</p>
-              <h2 id="casesTitle">기능이 아니라 문제해결 과정으로 보는 대표 3개</h2>
+              <p class="eyebrow">AGENT RELIABILITY FIRST</p>
+              <h2 id="casesTitle">AI를 쓰는 사람보다 AI 실패를 검증하는 사람에 가깝습니다</h2>
             </div>
           </div>
           <div id="caseStudies" class="case-list"></div>
+        </section>
+
+        <section id="lenses" class="section-block" aria-labelledby="lensesTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">ROLE LENSES</p>
+              <h2 id="lensesTitle">같은 작업물을 직무별로 다르게 읽히게 합니다</h2>
+            </div>
+          </div>
+          <div id="roleLenses" class="lens-grid"></div>
+        </section>
+
+        <section id="evidence" class="section-block" aria-labelledby="evidenceTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">EVIDENCE BOARD</p>
+              <h2 id="evidenceTitle">검증이라는 단어를 숫자와 테스트로 받칩니다</h2>
+            </div>
+          </div>
+          <div id="evidenceBoard" class="evidence-grid"></div>
         </section>
 
         <section id="projects" class="section-block" aria-labelledby="projectsTitle">
           <div class="section-heading">
             <div>
               <p class="eyebrow">PINNED REPOSITORIES</p>
-              <h2 id="projectsTitle">대표 프로젝트 6개: 문제, 판단, 증거</h2>
+              <h2 id="projectsTitle">대표 프로젝트 6개: 렌즈, 문제, 판단, 증거</h2>
             </div>
             <div id="projectFilters" class="filter-row" aria-label="Project filters"></div>
           </div>
@@ -99,7 +122,7 @@
         <section id="method" class="section-block architecture-grid" aria-labelledby="methodTitle">
           <div>
             <p class="eyebrow">ENGINEERING METHOD</p>
-            <h2 id="methodTitle">무작정 만든 코드가 아니라 설명 가능한 결정의 기록</h2>
+            <h2 id="methodTitle">AI가 만든 후보를 내가 설명 가능한 시스템으로 닫는 방식</h2>
           </div>
           <ol id="principleList" class="signal-chain"></ol>
         </section>
@@ -108,7 +131,7 @@
           <div class="section-heading">
             <div>
               <p class="eyebrow">STACK TRACE</p>
-              <h2 id="stackTitle">점수가 아니라 문제를 푸는 데 반복해서 쓴 기술 축</h2>
+              <h2 id="stackTitle">특정 분야 점수가 아니라 문제를 닫는 데 반복해서 쓴 기술 축</h2>
             </div>
           </div>
           <div id="stackList" class="stack-list"></div>
