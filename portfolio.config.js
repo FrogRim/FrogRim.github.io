@@ -48,9 +48,9 @@ window.PORTFOLIO = {
   ],
   evidenceBoard: [
     {
-      metric: "npm test 27/27",
+      metric: "npm test 30/30",
       project: "HaltTrace",
-      meaning: "Codex context-only events, apply_patch/MCP/tool-exception triggers, known limits를 contract test로 고정",
+      meaning: "observer-only dump workflow와 latest/explain/handoff CLI를 tests로 고정",
       repo: "https://github.com/FrogRim/halttrace",
     },
     {
@@ -87,8 +87,8 @@ window.PORTFOLIO = {
   stackGroups: [
     {
       label: "Agent reliability",
-      items: ["TypeScript", "Node.js", "Hooks", "Contract Tests", "Markdown Dumps"],
-      usedFor: "coding-agent 세션 관찰, Codex/Claude hook adapter, 실패 맥락 backtrace",
+      items: ["TypeScript", "Node.js", "Hooks", "Dump CLI", "Contract Tests"],
+      usedFor: "coding-agent 세션 관찰, Codex/Claude hook adapter, 로컬 failure triage와 handoff prompt",
     },
     {
       label: "Product AI runtime",
@@ -118,12 +118,12 @@ window.PORTFOLIO = {
       repo: "https://github.com/FrogRim/halttrace",
       problem: "AI agent 세션이 hook/tool/runtime 경계에서 멈추면 원인 추적에 필요한 최근 맥락이 흩어집니다.",
       method:
-        "Claude/Codex adapter에서 이벤트를 observer-only router로 모으고, trigger policy가 맞을 때만 로컬 Markdown backtrace를 남깁니다.",
+        "Claude/Codex adapter에서 이벤트를 observer-only router로 모으고, trigger policy가 맞을 때만 로컬 Markdown dump를 남긴 뒤 latest/explain/handoff CLI로 소비합니다.",
       decision:
-        "enforcement gate처럼 과장하지 않고, Codex dump는 anomaly-bearing apply_patch/MCP/tool-exception 이벤트로 제한했습니다.",
+        "기본 halttrace CLI는 사용자용 failure automation entry로 두고, hook 실행은 halttrace-claude/halttrace-codex로 분리했습니다.",
       aiRecord:
-        "AI에게 hook boundary와 failure trigger를 검토하게 한 뒤, context-only 이벤트와 non-trigger 조건을 contract test로 고정했습니다.",
-      evidence: "tests/codex-contract.test.ts, npm test 27/27, trigger policy, known limits",
+        "AI에게 dump workflow가 자동 수리나 policy gate처럼 과장될 위험을 검토하게 한 뒤 no retry, no network, no provider dependency를 문서화했습니다.",
+      evidence: "npm test 30/30, dump workflow tests, latest/explain/handoff, known limits",
     },
     {
       title: "LinguaCall",
@@ -159,11 +159,11 @@ window.PORTFOLIO = {
       year: "2026",
       status: "MVP",
       repo: "https://github.com/FrogRim/halttrace",
-      description: "coding-agent 세션이 비자발적으로 멈출 때 로컬 Markdown backtrace를 남기는 observability tool.",
-      problem: "agent 작업이 host hook/tool/runtime 경계에서 멈추면 원인 추적에 필요한 최근 맥락이 흩어지는 문제",
-      decision: "observer-only router로 제한하고 Codex dump는 anomaly-bearing apply_patch/MCP/tool-exception 이벤트에 묶음",
-      evidence: "Codex contract tests, npm test 27/27, trigger policy, known limits",
-      stack: ["TypeScript", "Node.js", "Hooks", "Contract Tests", "Markdown"],
+      description: "coding-agent 세션이 멈춘 뒤 로컬 dump를 deterministic triage와 handoff prompt로 바꾸는 failure automation tool.",
+      problem: "agent 작업이 멈춘 뒤 최신 dump 경로, 원인 후보, 증거, 다음 체크, 다음 agent handoff가 손으로 흩어지는 문제",
+      decision: "observer-only 원칙은 유지하고 latest/explain/handoff CLI를 추가해 dump 소비 workflow만 자동화",
+      evidence: "npm test 30/30, dump workflow tests, no retry/network/provider dependency",
+      stack: ["TypeScript", "Node.js", "Hooks", "Dump CLI", "Contract Tests"],
       language: "TypeScript",
       color: "#00e5ff",
     },

@@ -27,7 +27,7 @@ portfolio = https://frogrim.github.io/
 
 | Repository | Problem I framed | Decision I made | Verification |
 | --- | --- | --- | --- |
-| [HaltTrace](https://github.com/FrogRim/halttrace) | agent 세션이 멈출 때 원인 추적 맥락이 흩어지는 문제 | observer-only router로 제한하고 Codex dump는 anomaly-bearing apply_patch/MCP/tool-exception 이벤트에 묶음 | Codex contract tests, npm test 27/27, known limits |
+| [HaltTrace](https://github.com/FrogRim/halttrace) | agent 세션이 멈춘 뒤 원인 후보와 다음 체크가 손으로 흩어지는 문제 | observer-only 원칙은 유지하고 `latest/explain/handoff`로 로컬 dump 분석과 handoff prompt 생성을 자동화 | npm test 30/30, dump workflow tests, no retry/network/provider dependency |
 | [LinguaCall](https://github.com/FrogRim/LinguaCall) | 실시간 회화 UX와 학습 리포트가 분리되는 문제 | WebRTC direct voice path, API/worker split, launch stack 축소 | PTT flow, worker report split, launch smoke commands |
 | [LLM-First Robot Control](https://github.com/FrogRim/LLM-First-Robot-Control) | 자연어 의도를 로봇 제어 파라미터로 바꾸는 간극 | LLM 출력을 설명문이 아니라 JSON control contract로 제한 | task success 55.6%, JSON compliance 100% |
 | [Robot Data Forge](https://github.com/FrogRim/ForgeXR) | raw teleoperation trajectory만으로 학습 가능성 판단 불가 | MVP-1은 policy uplift가 아니라 dataset artifact proof로 제한 | curation manifest, HDF5 export, trainer loader smoke |
