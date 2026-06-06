@@ -48,9 +48,9 @@ window.PORTFOLIO = {
   ],
   evidenceBoard: [
     {
-      metric: "npm test 30/30",
+      metric: "npm test 31/31",
       project: "HaltTrace",
-      meaning: "observer-only dump workflow와 latest/explain/handoff CLI를 tests로 고정",
+      meaning: "observer-only dump workflow, latest/explain/handoff/doctor CLI, dump-analysis skill을 tests로 고정",
       repo: "https://github.com/FrogRim/halttrace",
     },
     {
@@ -87,7 +87,7 @@ window.PORTFOLIO = {
   stackGroups: [
     {
       label: "Agent reliability",
-      items: ["TypeScript", "Node.js", "Hooks", "Dump CLI", "Contract Tests"],
+      items: ["TypeScript", "Node.js", "Hooks", "Dump CLI", "Agent Skills", "Contract Tests"],
       usedFor: "coding-agent 세션 관찰, Codex/Claude hook adapter, 로컬 failure triage와 handoff prompt",
     },
     {
@@ -118,12 +118,12 @@ window.PORTFOLIO = {
       repo: "https://github.com/FrogRim/halttrace",
       problem: "AI agent 세션이 hook/tool/runtime 경계에서 멈추면 원인 추적에 필요한 최근 맥락이 흩어집니다.",
       method:
-        "Claude/Codex adapter에서 이벤트를 observer-only router로 모으고, trigger policy가 맞을 때만 로컬 Markdown dump를 남긴 뒤 latest/explain/handoff CLI로 소비합니다.",
+        "Claude/Codex adapter에서 이벤트를 observer-only router로 모으고, trigger policy가 맞을 때만 로컬 Markdown dump를 남긴 뒤 latest/explain/handoff/doctor CLI와 dump-analysis skill로 소비합니다.",
       decision:
         "기본 halttrace CLI는 사용자용 failure automation entry로 두고, hook 실행은 halttrace-claude/halttrace-codex로 분리했습니다.",
       aiRecord:
         "AI에게 dump workflow가 자동 수리나 policy gate처럼 과장될 위험을 검토하게 한 뒤 no retry, no network, no provider dependency를 문서화했습니다.",
-      evidence: "npm test 30/30, dump workflow tests, latest/explain/handoff, known limits",
+      evidence: "npm test 31/31, dump workflow + skill sync tests, latest/explain/handoff/doctor, known limits",
     },
     {
       title: "LinguaCall",
@@ -159,11 +159,11 @@ window.PORTFOLIO = {
       year: "2026",
       status: "MVP",
       repo: "https://github.com/FrogRim/halttrace",
-      description: "coding-agent 세션이 멈춘 뒤 로컬 dump를 deterministic triage와 handoff prompt로 바꾸는 failure automation tool.",
+      description: "coding-agent 세션이 멈춘 뒤 로컬 dump를 deterministic triage, 상태 점검, handoff prompt로 바꾸는 failure automation tool.",
       problem: "agent 작업이 멈춘 뒤 최신 dump 경로, 원인 후보, 증거, 다음 체크, 다음 agent handoff가 손으로 흩어지는 문제",
-      decision: "observer-only 원칙은 유지하고 latest/explain/handoff CLI를 추가해 dump 소비 workflow만 자동화",
-      evidence: "npm test 30/30, dump workflow tests, no retry/network/provider dependency",
-      stack: ["TypeScript", "Node.js", "Hooks", "Dump CLI", "Contract Tests"],
+      decision: "observer-only 원칙은 유지하고 latest/explain/handoff/doctor CLI를 추가해 dump 소비 workflow만 자동화",
+      evidence: "npm test 31/31, dump workflow + skill sync tests, no retry/network/provider dependency",
+      stack: ["TypeScript", "Node.js", "Hooks", "Dump CLI", "Agent Skills", "Contract Tests"],
       language: "TypeScript",
       color: "#00e5ff",
     },
