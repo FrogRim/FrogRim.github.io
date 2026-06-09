@@ -41,7 +41,7 @@ window.PORTFOLIO = {
     {
       title: "Product AI Engineer",
       route: "LinguaCall -> HaltTrace -> ForgeXR",
-      emphasis: "realtime UX, worker split, launch stack, operational evidence",
+      emphasis: "Realtime GA voice UX, worker split, VPS deployment, operational evidence",
       proof:
         "사용자 경험 안에서 AI를 어떻게 연결하고, 비동기 처리와 운영 검증을 어디까지 닫았는지 보여줍니다.",
     },
@@ -92,8 +92,8 @@ window.PORTFOLIO = {
     },
     {
       label: "Product AI runtime",
-      items: ["React", "WebRTC", "OpenAI Realtime", "Worker Queue", "Supabase"],
-      usedFor: "실시간 음성 UX, 세션 관리, 비동기 리포트 생성, launch stack 축소",
+      items: ["React", "WebRTC", "OpenAI Realtime GA", "Worker Queue", "Docker", "VPS"],
+      usedFor: "Realtime voice UX, ephemeral client secrets, WebRTC SDP exchange, async reports, VPS portfolio deployment",
     },
     {
       label: "Robotics / data",
@@ -129,14 +129,14 @@ window.PORTFOLIO = {
       title: "LinguaCall",
       domain: "Product AI runtime",
       repo: "https://github.com/FrogRim/LinguaCall",
-      problem: "말하기 연습은 실시간 턴 제어와 학습 리포트가 분리되면 실제 대화처럼 훈련하기 어렵습니다.",
+      problem: "A realtime AI speaking MVP needs more than a UI demo: it has to close browser microphone round-trip, Realtime session boundaries, and deployable runtime behavior.",
       method:
-        "브라우저는 WebRTC로 OpenAI Realtime에 직접 연결하고, API/worker는 인증, 세션, 결제, 리포트를 분리했습니다.",
+        "The API creates ephemeral client secrets at `/v1/realtime/client_secrets`, and the Web client sends WebRTC SDP through `/v1/realtime/calls` to open an OpenAI Realtime GA session.",
       decision:
-        "초기 SaaS-heavy 구성을 줄이고 Supabase/Toss/VPS 중심 launch stack으로 좁혀 MVP 검증 속도를 우선했습니다.",
+        "For the VPS portfolio deploy, AppInToss is excluded from the default web Docker build and only enabled with `VITE_BUILD_APPINTOSS=true` when needed.",
       aiRecord:
-        "AI에는 WebRTC 세션 후보, worker 분리 위험, launch smoke 관점을 지시했고 결과는 lint/typecheck/build/smoke로 검증합니다.",
-      evidence: "PTT voice path, worker report split, launch smoke commands, scope reduction log",
+        "AI was directed around Realtime GA migration, browser microphone round-trip, and build scope reduction; the result is checked with tests, live browser voice validation, and VPS deployment evidence.",
+      evidence: "browser microphone round-trip confirmed, Realtime GA client secret/SDP flow, VITE_BUILD_APPINTOSS=false default, VPS portfolio demo deployed",
     },
     {
       title: "Robot Data Forge",
@@ -186,11 +186,11 @@ window.PORTFOLIO = {
       year: "2026",
       status: "MVP",
       repo: "https://github.com/FrogRim/LinguaCall",
-      description: "WebRTC 기반 실시간 AI 회화 연습과 비동기 학습 리포트 MVP.",
-      problem: "실시간 음성 턴 제어와 학습 피드백 흐름이 분리되는 문제",
-      decision: "WebRTC direct path + API/worker split + launch stack 축소",
-      evidence: "PTT, worker report, smoke commands",
-      stack: ["React", "TypeScript", "WebRTC", "OpenAI Realtime", "Supabase"],
+      description: "Realtime AI speaking practice MVP using OpenAI Realtime GA, WebRTC, async learning reports, and a VPS portfolio demo deployment.",
+      problem: "Close browser microphone round-trip, Realtime session boundaries, and deploy build size in one product path.",
+      decision: "Realtime GA client secret/SDP flow + API/worker split + AppInToss opt-in build",
+      evidence: "browser microphone round-trip, /v1/realtime/client_secrets, /v1/realtime/calls, VITE_BUILD_APPINTOSS=false, VPS demo deployed",
+      stack: ["React", "TypeScript", "WebRTC", "OpenAI Realtime GA", "Docker", "VPS"],
       language: "TypeScript",
       color: "#00e5ff",
     },
@@ -255,7 +255,7 @@ window.PORTFOLIO = {
     {
       date: "2026",
       title: "Agent reliability와 product AI runtime",
-      text: "HaltTrace, LinguaCall, Robot Data Forge를 통해 agent 실패 관찰, 실시간 음성 UX, robot data trust layer를 공개 증거로 정리했습니다.",
+      text: "HaltTrace, LinguaCall, and Robot Data Forge make agent failure observation, Realtime GA voice UX, and robot data trust layer evidence public.",
     },
     {
       date: "2025",
