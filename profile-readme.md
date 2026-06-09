@@ -30,7 +30,7 @@ portfolio = https://frogrim.github.io/
 | [HaltTrace](https://github.com/FrogRim/halttrace) | agent 세션이 멈춘 뒤 원인 후보와 다음 체크가 손으로 흩어지는 문제 | observer-only 원칙은 유지하고 `latest/explain/handoff/doctor`로 로컬 dump 분석, 상태 점검, handoff prompt 생성을 자동화 | npm test 31/31, dump workflow + skill sync tests, no retry/network/provider dependency |
 | [LinguaCall](https://github.com/FrogRim/LinguaCall) | 실시간 회화 UX와 학습 리포트가 분리되는 문제 | WebRTC direct voice path, API/worker split, launch stack 축소 | PTT flow, worker report split, launch smoke commands |
 | [LLM-First Robot Control](https://github.com/FrogRim/LLM-First-Robot-Control) | 자연어 의도를 로봇 제어 파라미터로 바꾸는 간극 | LLM 출력을 설명문이 아니라 JSON control contract로 제한 | task success 55.6%, JSON compliance 100% |
-| [Robot Data Forge](https://github.com/FrogRim/ForgeXR) | raw teleoperation trajectory만으로 학습 가능성 판단 불가 | MVP-1은 policy uplift가 아니라 dataset artifact proof로 제한 | curation manifest, HDF5 export, trainer loader smoke |
+| [Robot Data Forge](https://github.com/FrogRim/ForgeXR) | raw robot-action trajectory만으로 학습 가능성과 구매 신뢰성을 판단하기 어려운 문제 | HMD-first 데모가 아니라 data trust layer로 재정의하고 MVP-1 dataset artifact, MVP-1+ cross-embodiment adapter, UR file-backed lineage를 분리 | data trust proof 4 accepted/4 rejected, MVP-1+ 4 adapters, HDF5/trainer smoke, UR SHA-256 lineage, MVP-2 harness_ready=true/proof_eligible=false |
 | [GPU 3D Algorithm](https://github.com/FrogRim/GPU_3DAlgorithm) | brute force collision detection 비용 증가 | AABB/BVH/BVTT 직접 구현과 동일 scene benchmark 비교 | 12,182 triangles, 847ms -> 126ms, accuracy 100% |
 | [UE5 ITD Parser Plugin](https://github.com/FrogRim/UE5-ITD-Parser) | 외부 3D format과 engine mesh contract 불일치 | 완성 importer보다 UFactory extension point와 geometry risk 분석에 집중 | UFactory skeleton, Non-Manifold mitigation notes |
 

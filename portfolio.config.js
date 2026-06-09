@@ -34,9 +34,9 @@ window.PORTFOLIO = {
     {
       title: "Robotics / Defense / Systems",
       route: "LLM-First Robot Control -> ForgeXR -> GPU 3D Algorithm -> UE5 ITD Parser",
-      emphasis: "control contract, data quality, geometry risk, performance measurement",
+      emphasis: "control contract, data trust layer, lineage, geometry risk, performance measurement",
       proof:
-        "AI를 전면에 세우기보다 제어 파라미터, dataset artifact, BVH/BVTT benchmark, engine mesh contract를 먼저 보여줍니다.",
+        "AI를 전면에 세우기보다 제어 파라미터, dataset artifact, UR lineage, BVH/BVTT benchmark, engine mesh contract를 먼저 보여줍니다.",
     },
     {
       title: "Product AI Engineer",
@@ -78,9 +78,9 @@ window.PORTFOLIO = {
       repo: "https://github.com/FrogRim/GPU_3DAlgorithm",
     },
     {
-      metric: "trainer smoke",
+      metric: "MVP-1+ 4 adapters",
       project: "Robot Data Forge",
-      meaning: "teleoperation trajectory를 HDF5 export와 trainer loader까지 통과시키는 artifact proof",
+      meaning: "4개 robot embodiment adapter가 같은 trajectory contract, HDF5 export, trainer smoke gate를 통과",
       repo: "https://github.com/FrogRim/ForgeXR",
     },
   ],
@@ -97,8 +97,8 @@ window.PORTFOLIO = {
     },
     {
       label: "Robotics / data",
-      items: ["Python", "FastAPI", "Isaac Lab", "OpenXR", "HDF5"],
-      usedFor: "제어 contract, trajectory 수집, evaluator, curation, trainer smoke check",
+      items: ["Python", "FastAPI", "HDF5", "Trust Records", "Lineage", "Pytest"],
+      usedFor: "robot data trust layer, curation manifest, UR file-backed lineage, policy A/B harness readiness",
     },
     {
       label: "Graphics / engine",
@@ -137,6 +137,19 @@ window.PORTFOLIO = {
       aiRecord:
         "AI에는 WebRTC 세션 후보, worker 분리 위험, launch smoke 관점을 지시했고 결과는 lint/typecheck/build/smoke로 검증합니다.",
       evidence: "PTT voice path, worker report split, launch smoke commands, scope reduction log",
+    },
+    {
+      title: "Robot Data Forge",
+      domain: "Robotics data trust layer",
+      repo: "https://github.com/FrogRim/ForgeXR",
+      problem: "raw robot-action trajectory만 저장하면 학습 가능성, rejected reason, provenance, trainer compatibility를 설명하기 어렵습니다.",
+      method:
+        "trajectory를 normalized contract로 변환하고 evaluator, curation manifest, HDF5 export, trust record, trainer smoke까지 한 proof path로 묶었습니다.",
+      decision:
+        "HMD/OpenXR-first 데모를 제품 정체성에서 내리고, MVP-1은 dataset artifact proof로 제한했습니다. MVP-1+에서는 4개 embodiment adapter와 UR file-backed SHA-256 lineage를 추가했습니다.",
+      aiRecord:
+        "AI가 제안한 policy uplift 표현은 거절하고, MVP-2 harness_ready=true와 proof_eligible=false를 분리해 아직 학습 성능 개선을 주장하지 않도록 문서화했습니다.",
+      evidence: "data trust proof 4 accepted/4 rejected, MVP-1+ 4 adapters, HDF5/trainer smoke, UR SHA-256 lineage, MVP-2 harness_ready=true/proof_eligible=false",
     },
     {
       title: "GPU 3D Algorithm",
@@ -199,13 +212,13 @@ window.PORTFOLIO = {
       title: "Robot Data Forge",
       lenses: ["Robotics / Defense", "Product AI"],
       year: "2026",
-      status: "MVP-1",
+      status: "MVP-1+",
       repo: "https://github.com/FrogRim/ForgeXR",
-      description: "teleoperation trajectory를 학습 가능한 dataset artifact로 검증하는 파이프라인.",
-      problem: "raw trajectory만으로는 학습 가능성 판단 불가",
-      decision: "policy uplift보다 artifact proof를 MVP-1 목표로 고정",
-      evidence: "curation manifest, HDF5 export, trainer smoke",
-      stack: ["FastAPI", "Isaac Lab", "OpenXR", "HDF5", "SQLAlchemy"],
+      description: "robot-action trajectory를 replay/action-labelled, task-validated, trainer-loadable dataset artifact와 trust record로 바꾸는 data infrastructure.",
+      problem: "raw trajectory만으로는 학습 가능성, rejected reason, provenance, trainer compatibility 판단 불가",
+      decision: "HMD-first proof를 data trust layer로 reset하고 MVP-1 dataset artifact, MVP-1+ cross-embodiment adapter, UR file-backed lineage를 분리",
+      evidence: "4 accepted/4 rejected, 4 adapters, HDF5/trainer smoke, UR SHA-256 lineage, MVP-2 harness_ready=true/proof_eligible=false",
+      stack: ["FastAPI", "HDF5", "Curation", "Trust Records", "Lineage", "Pytest"],
       language: "Python",
       color: "#00ff88",
     },
@@ -242,7 +255,7 @@ window.PORTFOLIO = {
     {
       date: "2026",
       title: "Agent reliability와 product AI runtime",
-      text: "HaltTrace와 LinguaCall을 통해 AI agent 실패 관찰, 실시간 음성 UX, worker 분리, 검증 명령을 공개 증거로 정리했습니다.",
+      text: "HaltTrace, LinguaCall, Robot Data Forge를 통해 agent 실패 관찰, 실시간 음성 UX, robot data trust layer를 공개 증거로 정리했습니다.",
     },
     {
       date: "2025",
