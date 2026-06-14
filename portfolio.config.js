@@ -26,10 +26,10 @@ window.PORTFOLIO = {
   roleLenses: [
     {
       title: "AI / Agent Engineer",
-      route: "HaltTrace -> LinguaCall -> LLM-First Robot Control",
-      emphasis: "agent/tool boundary, contract tests, AI runtime productization",
+      route: "Signature Harness -> HaltTrace -> LinguaCall",
+      emphasis: "agent completion gating, observer-only failure capture, contract tests, AI runtime productization",
       proof:
-        "HaltTrace를 먼저 보여주고, AI가 실패하는 지점을 hook/router/trigger policy와 test로 어떻게 잡는지 설명합니다.",
+        "Signature Harness로 에이전트의 '완료'를 Oracle 검증으로 게이트하고, HaltTrace로 실패 지점을 hook/router/trigger policy와 test로 어떻게 잡는지 보여줍니다.",
     },
     {
       title: "Robotics / Defense / Systems",
@@ -52,6 +52,12 @@ window.PORTFOLIO = {
       project: "HaltTrace",
       meaning: "observer-only dump workflow, latest/explain/handoff/doctor CLI, dump-analysis skill을 tests로 고정",
       repo: "https://github.com/FrogRim/halttrace",
+    },
+    {
+      metric: "benchmark 23 / regression 5",
+      project: "Signature Harness",
+      meaning: "에이전트의 '완료'를 Oracle 검증·eval suite로 게이트하는 cross-agent goal-loop 하네스",
+      repo: "https://github.com/FrogRim/signature-harness",
     },
     {
       metric: "JSON compliance 100%",
@@ -87,13 +93,13 @@ window.PORTFOLIO = {
   stackGroups: [
     {
       label: "Agent reliability",
-      items: ["TypeScript", "Node.js", "Hooks", "Dump CLI", "Agent Skills", "Contract Tests"],
-      usedFor: "coding-agent 세션 관찰, Codex/Claude hook adapter, 로컬 failure triage와 handoff prompt",
+      items: ["TypeScript", "Node.js", "Python", "Hooks", "Goal Loop", "Oracle Verification", "Dump CLI", "Contract Tests"],
+      usedFor: "coding-agent 세션 관찰, Codex/Claude hook adapter, goal-loop 완료 검증, 로컬 failure triage와 handoff prompt",
     },
     {
       label: "Product AI runtime",
       items: ["React", "WebRTC", "OpenAI Realtime GA", "Worker Queue", "Docker", "VPS"],
-      usedFor: "Realtime voice UX, ephemeral client secrets, WebRTC SDP exchange, async reports, VPS portfolio deployment",
+      usedFor: "Realtime 음성 UX, ephemeral client secret, WebRTC SDP 교환, 비동기 리포트, VPS 포트폴리오 배포",
     },
     {
       label: "Robotics / data",
@@ -126,17 +132,31 @@ window.PORTFOLIO = {
       evidence: "npm test 31/31, dump workflow + skill sync tests, latest/explain/handoff/doctor, known limits",
     },
     {
+      title: "Signature Harness",
+      domain: "Agent reliability / verification",
+      repo: "https://github.com/FrogRim/signature-harness",
+      problem:
+        "에이전트가 '완료'를 선언하는 순간을 그대로 신뢰하면, 실제로 목표가 충족됐는지·중간에 hang이나 drift가 났는지 증거 없이 넘어가게 됩니다.",
+      method:
+        "목표를 Seed로 고정하고 Active Slice로 좁힌 뒤, 실행 trace·artifact·eval을 기록하고 Oracle 검증을 통과할 때만 완료로 닫습니다. Codex와 Claude Code에서 같은 작업 철학을 쓰도록 portable skill/runtime으로 묶었습니다.",
+      decision:
+        "범용 비서를 또 만들지 않고 1차 vertical을 'AI coding-agent completion auditor'로 좁혔습니다. 외부 runner의 hang artifact는 process를 직접 죽이지 않고 cleanup/reset 증거만 검수합니다.",
+      aiRecord:
+        "AI에 'host-level E2E 오케스트레이션을 증명했다'처럼 과장될 수 있는 표현을 검토하게 한 뒤, real sandbox adapter 미구현(fail-closed)과 host-level E2E 미검증을 README에 그대로 한계로 남겼습니다.",
+      evidence: "benchmark 23 / regression 5 eval suite, run manifest·state·trace·replay·ledger, completion auditor hang/remediation gate, fail-closed sandbox",
+    },
+    {
       title: "LinguaCall",
       domain: "Product AI runtime",
       repo: "https://github.com/FrogRim/LinguaCall",
-      problem: "A realtime AI speaking MVP needs more than a UI demo: it has to close browser microphone round-trip, Realtime session boundaries, and deployable runtime behavior.",
+      problem: "실시간 AI 회화 MVP는 UI 데모만으로는 부족합니다. 브라우저 마이크 왕복, Realtime 세션 경계, 배포 가능한 런타임 동작까지 한 흐름으로 닫아야 합니다.",
       method:
-        "The API creates ephemeral client secrets at `/v1/realtime/client_secrets`, and the Web client sends WebRTC SDP through `/v1/realtime/calls` to open an OpenAI Realtime GA session.",
+        "API가 `/v1/realtime/client_secrets`에서 ephemeral client secret을 만들고, 웹 클라이언트가 `/v1/realtime/calls`로 WebRTC SDP를 보내 OpenAI Realtime GA 세션을 엽니다.",
       decision:
-        "For the VPS portfolio deploy, AppInToss is excluded from the default web Docker build and only enabled with `VITE_BUILD_APPINTOSS=true` when needed.",
+        "VPS 포트폴리오 배포에서는 AppInToss를 기본 web Docker 빌드에서 제외하고, 필요할 때만 `VITE_BUILD_APPINTOSS=true`로 켭니다.",
       aiRecord:
-        "AI was directed around Realtime GA migration, browser microphone round-trip, and build scope reduction; the result is checked with tests, live browser voice validation, and VPS deployment evidence.",
-      evidence: "browser microphone round-trip confirmed, Realtime GA client secret/SDP flow, VITE_BUILD_APPINTOSS=false default, VPS portfolio demo deployed",
+        "AI에는 Realtime GA 마이그레이션, 브라우저 마이크 왕복, 빌드 범위 축소를 검토하게 했고, 결과는 테스트·실제 브라우저 음성 검증·VPS 배포 증거로 확인했습니다.",
+      evidence: "브라우저 마이크 왕복 확인, Realtime GA client secret/SDP 흐름, VITE_BUILD_APPINTOSS=false 기본, VPS 포트폴리오 데모 배포",
     },
     {
       title: "Robot Data Forge",
@@ -181,15 +201,29 @@ window.PORTFOLIO = {
       color: "#00e5ff",
     },
     {
+      title: "Signature Harness",
+      lenses: ["Agent / Verification"],
+      year: "2026",
+      status: "MVP",
+      repo: "https://github.com/FrogRim/signature-harness",
+      description: "Codex·Claude Code 공용 goal-loop 하네스. 에이전트의 '완료'를 그대로 믿지 않고 trace·artifact·eval 증거가 Oracle 검증을 통과할 때만 완료로 닫는 cross-agent runtime.",
+      problem: "에이전트가 '끝났다'고 선언해도 목표가 실제로 충족됐는지, 중간에 hang/drift가 났는지 증거 없이 믿게 되는 문제",
+      decision: "Seed로 목표 고정 -> Active Slice로 범위 축소 -> 실행 증거 기록 -> Oracle 검증 통과 시에만 완료. completion auditor가 hang artifact를 감지해 remediation 게이트로 보냄",
+      evidence: "benchmark 23 / regression 5 eval suite, run manifest·state·trace·replay·ledger, fail-closed sandbox",
+      stack: ["Python", "Goal Loop", "Oracle Verification", "Eval Suite", "State Machine", "Permission Policy"],
+      language: "Python",
+      color: "#00e5ff",
+    },
+    {
       title: "LinguaCall",
       lenses: ["Product AI", "Agent / Verification"],
       year: "2026",
       status: "MVP",
       repo: "https://github.com/FrogRim/LinguaCall",
-      description: "Realtime AI speaking practice MVP using OpenAI Realtime GA, WebRTC, async learning reports, and a VPS portfolio demo deployment.",
-      problem: "Close browser microphone round-trip, Realtime session boundaries, and deploy build size in one product path.",
-      decision: "Realtime GA client secret/SDP flow + API/worker split + AppInToss opt-in build",
-      evidence: "browser microphone round-trip, /v1/realtime/client_secrets, /v1/realtime/calls, VITE_BUILD_APPINTOSS=false, VPS demo deployed",
+      description: "OpenAI Realtime GA·WebRTC 기반 실시간 AI 회화 연습 MVP. 비동기 학습 리포트와 VPS 포트폴리오 데모 배포까지 포함.",
+      problem: "브라우저 마이크 왕복, Realtime 세션 경계, 배포 빌드 크기를 하나의 제품 흐름으로 닫는 문제",
+      decision: "Realtime GA client secret/SDP 흐름 + API/worker 분리 + AppInToss opt-in 빌드",
+      evidence: "브라우저 마이크 왕복, /v1/realtime/client_secrets, /v1/realtime/calls, VITE_BUILD_APPINTOSS=false, VPS 데모 배포",
       stack: ["React", "TypeScript", "WebRTC", "OpenAI Realtime GA", "Docker", "VPS"],
       language: "TypeScript",
       color: "#00e5ff",
@@ -255,7 +289,7 @@ window.PORTFOLIO = {
     {
       date: "2026",
       title: "Agent reliability와 product AI runtime",
-      text: "HaltTrace, LinguaCall, and Robot Data Forge make agent failure observation, Realtime GA voice UX, and robot data trust layer evidence public.",
+      text: "HaltTrace, Signature Harness, LinguaCall, Robot Data Forge로 에이전트 실패 관측, 완료 검증, Realtime 음성 UX, 로봇 데이터 신뢰 계층 증거를 공개로 남겼습니다.",
     },
     {
       date: "2025",
