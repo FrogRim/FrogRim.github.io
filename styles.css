@@ -328,6 +328,7 @@ h3 {
 }
 
 .section-block {
+  scroll-margin-top: 88px;
   padding: 34px 0;
   border-top: 1px solid rgba(36, 48, 65, 0.7);
 }

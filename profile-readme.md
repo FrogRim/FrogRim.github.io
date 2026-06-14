@@ -12,6 +12,7 @@ AI를 많이 쓰는 사람이 아니라, AI가 낸 결과를 시스템으로 구
 role      = AI-native systems builder
 base      = cross-domain generalist with system-level proof
 method    = frame problem -> build system -> verify failure modes -> document limits
+anchors   = agent verification | Realtime AI product | robot control contract
 portfolio = https://frogrim.github.io/
 ```
 
@@ -19,20 +20,25 @@ portfolio = https://frogrim.github.io/
 
 | Lens | Read first | What I prove |
 | --- | --- | --- |
-| AI / Agent Engineer | HaltTrace -> LinguaCall -> LLM-First Robot Control | agent/tool boundary 이해, contract test, AI 런타임 제품화 |
-| Robotics / Defense / Systems | LLM-First Robot Control -> ForgeXR -> GPU 3D Algorithm -> UE5 ITD Parser | 제어 contract, 데이터 품질, 성능 측정, geometry/engine risk |
-| Product AI Engineer | LinguaCall -> HaltTrace -> ForgeXR | 실시간 UX, 비동기 worker, 운영 가능한 launch stack |
+| AI / Agent Engineer | Agent Verification Stack -> LinguaCall | agent failure capture, completion audit, contract test, AI 런타임 제품화 |
+| Product AI Engineer | LinguaCall -> Agent Verification Stack -> ForgeXR | 실시간 UX, Realtime 세션 경계, worker 분리, 운영 가능한 launch stack |
+| Robotics / Defense / Systems | LLM-First Robot Control -> ForgeXR -> GPU 3D Algorithm | 제어 contract, 데이터 품질, 성능 측정, geometry/system risk |
 
-## Featured Proof Matrix
+## Representative Stories
 
 | Repository | Problem I framed | Decision I made | Verification |
 | --- | --- | --- | --- |
-| [HaltTrace](https://github.com/FrogRim/halttrace) | agent 세션이 멈춘 뒤 원인 후보와 다음 체크가 손으로 흩어지는 문제 | observer-only 원칙은 유지하고 `latest/explain/handoff/doctor`로 로컬 dump 분석, 상태 점검, handoff prompt 생성을 자동화 | npm test 31/31, dump workflow + skill sync tests, no retry/network/provider dependency |
+| [Agent Verification Stack](https://github.com/FrogRim/halttrace) / [Signature Harness](https://github.com/FrogRim/signature-harness) | AI coding agent가 멈추거나 “완료”를 선언했을 때 그 결과를 어떻게 믿을지의 문제 | HaltTrace는 failure context를 observer-only로 남기고, Signature Harness는 Seed/Active Slice/Oracle 검증으로 완료 조건을 닫음 | HaltTrace npm test 31/31, Signature Harness benchmark 23 / regression 5, known limits |
 | [LinguaCall](https://github.com/FrogRim/LinguaCall) | 실시간 AI 회화 MVP가 데모를 넘어 실제 브라우저 음성 왕복과 운영 배포까지 닫혀야 하는 문제 | OpenAI Realtime GA 방식으로 전환하고 `/v1/realtime/client_secrets`와 `/v1/realtime/calls` SDP flow를 분리, VPS portfolio build에서는 AppInToss를 기본 제외 | browser microphone round-trip confirmed, Realtime GA client secret/SDP flow, VITE_BUILD_APPINTOSS=false default, VPS portfolio demo deployed |
-| [LLM-First Robot Control](https://github.com/FrogRim/LLM-First-Robot-Control) | 자연어 의도를 로봇 제어 파라미터로 바꾸는 간극 | LLM 출력을 설명문이 아니라 JSON control contract로 제한 | task success 55.6%, JSON compliance 100% |
-| [Robot Data Forge](https://github.com/FrogRim/ForgeXR) | raw robot-action trajectory만으로 학습 가능성과 구매 신뢰성을 판단하기 어려운 문제 | HMD-first 데모가 아니라 data trust layer로 재정의하고 MVP-1 dataset artifact, MVP-1+ cross-embodiment adapter, UR file-backed lineage를 분리 | data trust proof 4 accepted/4 rejected, MVP-1+ 4 adapters, HDF5/trainer smoke, UR SHA-256 lineage, MVP-2 harness_ready=true/proof_eligible=false |
-| [GPU 3D Algorithm](https://github.com/FrogRim/GPU_3DAlgorithm) | brute force collision detection 비용 증가 | AABB/BVH/BVTT 직접 구현과 동일 scene benchmark 비교 | 12,182 triangles, 847ms -> 126ms, accuracy 100% |
-| [UE5 ITD Parser Plugin](https://github.com/FrogRim/UE5-ITD-Parser) | 외부 3D format과 engine mesh contract 불일치 | 완성 importer보다 UFactory extension point와 geometry risk 분석에 집중 | UFactory skeleton, Non-Manifold mitigation notes |
+| [LLM-First Robot Control](https://github.com/FrogRim/LLM-First-Robot-Control) | “유리컵을 조심히” 같은 자연어 안의 물리 의도를 로봇 제어 파라미터로 바꾸는 문제 | LLM 출력을 자유 텍스트가 아니라 JSON control contract로 제한하고 Genesis simulation에서 Rule/RL baseline과 비교 | JSON compliance 100%, task success 55.6%, physical inference 66.7%, simulation-limited |
+
+## Supporting Evidence
+
+| Repository | What it adds |
+| --- | --- |
+| [Robot Data Forge](https://github.com/FrogRim/ForgeXR) | robot-action trajectory를 HDF5/trainer smoke/lineage/trust record로 닫는 data trust layer |
+| [GPU 3D Algorithm](https://github.com/FrogRim/GPU_3DAlgorithm) | 12,182 triangles scene에서 brute force 847ms -> BVTT 126ms로 줄인 graphics/system benchmark |
+| [UE5 ITD Parser Plugin](https://github.com/FrogRim/UE5-ITD-Parser) | 외부 3D format과 Unreal Static Mesh contract의 불일치를 분석한 engine plugin prototype |
 
 ## What I Optimize For
 

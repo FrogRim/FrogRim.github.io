@@ -1,10 +1,10 @@
 window.PORTFOLIO = {
   filters: ["All", "Agent / Verification", "Product AI", "Robotics / Defense", "Graphics / Engine"],
   proofSignals: [
-    { label: "Base", value: "cross-domain systems" },
-    { label: "Differentiator", value: "agent failure proof" },
-    { label: "Method", value: "build -> verify -> limits" },
-    { label: "Evidence", value: "tests + metrics" },
+    { label: "Position", value: "AI-native systems" },
+    { label: "Anchor 01", value: "agent verification" },
+    { label: "Anchor 02", value: "Realtime AI product" },
+    { label: "Anchor 03", value: "robot control contract" },
   ],
   operatingPrinciples: [
     {
@@ -26,24 +26,24 @@ window.PORTFOLIO = {
   roleLenses: [
     {
       title: "AI / Agent Engineer",
-      route: "Signature Harness -> HaltTrace -> LinguaCall",
+      route: "Agent Verification Stack -> LinguaCall",
       emphasis: "agent completion gating, observer-only failure capture, contract tests, AI runtime productization",
       proof:
-        "Signature Harness로 에이전트의 '완료'를 Oracle 검증으로 게이트하고, HaltTrace로 실패 지점을 hook/router/trigger policy와 test로 어떻게 잡는지 보여줍니다.",
+        "HaltTrace로 failure context를 남기고 Signature Harness로 '완료'를 Oracle 검증에 통과시켜, AI coding agent의 결과를 그냥 믿지 않는 개발 방식을 보여줍니다.",
     },
     {
       title: "Robotics / Defense / Systems",
-      route: "LLM-First Robot Control -> ForgeXR -> GPU 3D Algorithm -> UE5 ITD Parser",
+      route: "LLM-First Robot Control -> ForgeXR -> GPU 3D Algorithm",
       emphasis: "control contract, data trust layer, lineage, geometry risk, performance measurement",
       proof:
-        "AI를 전면에 세우기보다 제어 파라미터, dataset artifact, UR lineage, BVH/BVTT benchmark, engine mesh contract를 먼저 보여줍니다.",
+        "LLM을 챗봇이 아니라 JSON control contract로 제한하고, 시뮬레이션·데이터 신뢰 계층·성능 측정으로 시스템 사고를 보여줍니다.",
     },
     {
       title: "Product AI Engineer",
-      route: "LinguaCall -> HaltTrace -> ForgeXR",
+      route: "LinguaCall -> Agent Verification Stack -> ForgeXR",
       emphasis: "Realtime GA voice UX, worker split, VPS deployment, operational evidence",
       proof:
-        "사용자 경험 안에서 AI를 어떻게 연결하고, 비동기 처리와 운영 검증을 어디까지 닫았는지 보여줍니다.",
+        "AI API 데모가 아니라 브라우저 음성 왕복, Realtime 세션 경계, worker 분리, 배포 제약까지 제품 흐름으로 닫은 경험을 보여줍니다.",
     },
   ],
   evidenceBoard: [
@@ -119,70 +119,52 @@ window.PORTFOLIO = {
   ],
   caseStudies: [
     {
-      title: "HaltTrace",
-      domain: "Agent reliability / verification",
+      title: "Agent Verification Stack",
+      domain: "Anchor 01 / Agent reliability",
       repo: "https://github.com/FrogRim/halttrace",
-      problem: "AI agent 세션이 hook/tool/runtime 경계에서 멈추면 원인 추적에 필요한 최근 맥락이 흩어집니다.",
-      method:
-        "Claude/Codex adapter에서 이벤트를 observer-only router로 모으고, trigger policy가 맞을 때만 로컬 Markdown dump를 남긴 뒤 latest/explain/handoff/doctor CLI와 dump-analysis skill로 소비합니다.",
-      decision:
-        "기본 halttrace CLI는 사용자용 failure automation entry로 두고, hook 실행은 halttrace-claude/halttrace-codex로 분리했습니다.",
-      aiRecord:
-        "AI에게 dump workflow가 자동 수리나 policy gate처럼 과장될 위험을 검토하게 한 뒤 no retry, no network, no provider dependency를 문서화했습니다.",
-      evidence: "npm test 31/31, dump workflow + skill sync tests, latest/explain/handoff/doctor, known limits",
-    },
-    {
-      title: "Signature Harness",
-      domain: "Agent reliability / verification",
-      repo: "https://github.com/FrogRim/signature-harness",
+      links: [
+        { label: "HaltTrace", href: "https://github.com/FrogRim/halttrace" },
+        { label: "Signature Harness", href: "https://github.com/FrogRim/signature-harness" },
+      ],
       problem:
-        "에이전트가 '완료'를 선언하는 순간을 그대로 신뢰하면, 실제로 목표가 충족됐는지·중간에 hang이나 drift가 났는지 증거 없이 넘어가게 됩니다.",
+        "AI로 프로젝트를 만드는 것이 쉬워질수록, 진짜 문제는 에이전트가 멈췄을 때 원인을 보존하고 '완료' 선언을 증거로 검증하는 것입니다.",
       method:
-        "목표를 Seed로 고정하고 Active Slice로 좁힌 뒤, 실행 trace·artifact·eval을 기록하고 Oracle 검증을 통과할 때만 완료로 닫습니다. Codex와 Claude Code에서 같은 작업 철학을 쓰도록 portable skill/runtime으로 묶었습니다.",
+        "HaltTrace는 Claude/Codex hook event를 observer-only로 모아 latest/explain/handoff dump workflow를 만들고, Signature Harness는 Seed -> Active Slice -> trace/artifact/eval -> Oracle 검증으로 완료 조건을 닫습니다.",
       decision:
-        "범용 비서를 또 만들지 않고 1차 vertical을 'AI coding-agent completion auditor'로 좁혔습니다. 외부 runner의 hang artifact는 process를 직접 죽이지 않고 cleanup/reset 증거만 검수합니다.",
+        "자동 수정, 자동 재시도, provider 의존성, host-level E2E 과장 표현은 넣지 않았습니다. failure capture와 completion audit의 책임을 분리해 fail-closed 한계를 명시했습니다.",
       aiRecord:
-        "AI에 'host-level E2E 오케스트레이션을 증명했다'처럼 과장될 수 있는 표현을 검토하게 한 뒤, real sandbox adapter 미구현(fail-closed)과 host-level E2E 미검증을 README에 그대로 한계로 남겼습니다.",
-      evidence: "benchmark 23 / regression 5 eval suite, run manifest·state·trace·replay·ledger, completion auditor hang/remediation gate, fail-closed sandbox",
+        "AI에게 '이 결과를 믿어도 되는가'보다 '어디서 실패했다고 주장하면 과장인가'를 검토하게 했고, README에는 no retry/network/provider dependency와 host-level 미검증 한계를 남겼습니다.",
+      evidence:
+        "HaltTrace npm test 31/31, Signature Harness benchmark 23 / regression 5, run manifest·state·trace·replay·ledger, known limits",
     },
     {
       title: "LinguaCall",
-      domain: "Product AI runtime",
+      domain: "Anchor 02 / Product AI runtime",
       repo: "https://github.com/FrogRim/LinguaCall",
-      problem: "실시간 AI 회화 MVP는 UI 데모만으로는 부족합니다. 브라우저 마이크 왕복, Realtime 세션 경계, 배포 가능한 런타임 동작까지 한 흐름으로 닫아야 합니다.",
+      problem:
+        "AI API를 붙인 화면만으로는 제품 경험이 되지 않습니다. 실시간 회화 MVP는 마이크 권한, WebRTC 왕복, Realtime 세션 경계, 배포 가능한 빌드까지 하나의 흐름으로 닫아야 합니다.",
       method:
         "API가 `/v1/realtime/client_secrets`에서 ephemeral client secret을 만들고, 웹 클라이언트가 `/v1/realtime/calls`로 WebRTC SDP를 보내 OpenAI Realtime GA 세션을 엽니다.",
       decision:
         "VPS 포트폴리오 배포에서는 AppInToss를 기본 web Docker 빌드에서 제외하고, 필요할 때만 `VITE_BUILD_APPINTOSS=true`로 켭니다.",
       aiRecord:
-        "AI에는 Realtime GA 마이그레이션, 브라우저 마이크 왕복, 빌드 범위 축소를 검토하게 했고, 결과는 테스트·실제 브라우저 음성 검증·VPS 배포 증거로 확인했습니다.",
+        "AI에는 Realtime GA 마이그레이션과 build scope 축소안을 검토하게 했고, 수락 여부는 실제 브라우저 음성 왕복, API endpoint, VPS 배포 제약으로 확인했습니다.",
       evidence: "브라우저 마이크 왕복 확인, Realtime GA client secret/SDP 흐름, VITE_BUILD_APPINTOSS=false 기본, VPS 포트폴리오 데모 배포",
     },
     {
-      title: "Robot Data Forge",
-      domain: "Robotics data trust layer",
-      repo: "https://github.com/FrogRim/ForgeXR",
-      problem: "raw robot-action trajectory만 저장하면 학습 가능성, rejected reason, provenance, trainer compatibility를 설명하기 어렵습니다.",
+      title: "LLM-First Robot Control",
+      domain: "Anchor 03 / Robotics AI research",
+      repo: "https://github.com/FrogRim/LLM-First-Robot-Control",
+      problem:
+        "자연어 명령에는 '유리컵을 조심히'처럼 재질, 취약성, 힘, 속도 제약이 암묵적으로 들어 있습니다. 문제는 이 의도를 자유 텍스트가 아니라 로봇 제어 파라미터로 바꾸는 것입니다.",
       method:
-        "trajectory를 normalized contract로 변환하고 evaluator, curation manifest, HDF5 export, trust record, trainer smoke까지 한 proof path로 묶었습니다.",
+        "Qwen2.5-14B에 QLoRA를 적용해 물리 도메인 데이터로 적응시키고, 출력은 object analysis, estimated physics, control parameters를 포함한 JSON control contract로 제한했습니다. Genesis 시뮬레이션에서 Rule/RL baseline과 비교했습니다.",
       decision:
-        "HMD/OpenXR-first 데모를 제품 정체성에서 내리고, MVP-1은 dataset artifact proof로 제한했습니다. MVP-1+에서는 4개 embodiment adapter와 UR file-backed SHA-256 lineage를 추가했습니다.",
+        "실제 로봇 완성이나 real-time feedback control로 주장하지 않고, simulation prototype과 control-contract evaluation으로 범위를 제한했습니다. 추론 지연은 30.5s -> 15.6s 최적화 후에도 한계로 남겼습니다.",
       aiRecord:
-        "AI가 제안한 policy uplift 표현은 거절하고, MVP-2 harness_ready=true와 proof_eligible=false를 분리해 아직 학습 성능 개선을 주장하지 않도록 문서화했습니다.",
-      evidence: "data trust proof 4 accepted/4 rejected, MVP-1+ 4 adapters, HDF5/trainer smoke, UR SHA-256 lineage, MVP-2 harness_ready=true/proof_eligible=false",
-    },
-    {
-      title: "GPU 3D Algorithm",
-      domain: "Graphics / systems depth",
-      repo: "https://github.com/FrogRim/GPU_3DAlgorithm",
-      problem: "삼각형 쌍을 brute force로 비교하면 모델 크기에 따라 충돌 감지 비용이 급격히 증가합니다.",
-      method:
-        "AABB, BVH, BVTT를 직접 구현하고 동일 scene에서 brute force/BVH/BVTT 처리 시간을 비교했습니다.",
-      decision:
-        "정확도를 유지한 채 후보 쌍 탐색을 줄이는 방향으로 최적화하고, OpenGL 디버그 렌더링으로 결과를 확인했습니다.",
-      aiRecord:
-        "AI에는 공간 자료구조 설명과 benchmark 표 검토를 맡겼고, 복잡도/측정 조건/한계가 과장되지 않도록 수정했습니다.",
-      evidence: "12,182 triangles, Brute Force 847ms -> BVTT 126ms, accuracy 100%",
+        "AI는 논문 구조와 baseline 비교 표현을 검토하는 데 사용했고, 최종 주장은 JSON 준수율, task success, 물리 추론 정확도, 실패 원인 분석처럼 방어 가능한 수치로 제한했습니다.",
+      evidence:
+        "JSON parsing/required/range compliance 100%, task success 55.6%, physical inference 66.7%, fragile object 6/9, inference 30.5s -> 15.6s",
     },
   ],
   projects: [

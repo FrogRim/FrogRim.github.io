@@ -61,7 +61,14 @@
       });
 
       const actions = createElement("div", "action-row");
-      actions.append(createLink("action-button action-button-primary", "Read case", study.repo));
+      if (study.links) {
+        study.links.forEach((link, linkIndex) => {
+          const className = linkIndex === 0 ? "action-button action-button-primary" : "action-button";
+          actions.append(createLink(className, link.label, link.href));
+        });
+      } else {
+        actions.append(createLink("action-button action-button-primary", "Read case", study.repo));
+      }
 
       body.append(heading, grid, actions);
       item.append(number, body);

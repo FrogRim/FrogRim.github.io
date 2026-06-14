@@ -2,7 +2,7 @@
 
 Static GitHub Pages portfolio for [FrogRim](https://github.com/FrogRim).
 
-The page positions the work as an AI-native, verification-driven systems portfolio: one core identity, multiple role lenses, and public evidence for each representative project.
+The page positions the work as an AI-native, verification-driven systems portfolio: three representative stories for hiring conversations, role lenses, and public evidence for supporting repositories.
 
 <p align="center">
   <a href="https://frogrim.github.io/">
@@ -17,8 +17,8 @@ https://frogrim.github.io/
 > role
 AI-native systems builder
 
-> lenses
-agent-reliability | product-ai | robotics-defense | graphics-engine
+> anchors
+agent-verification | Realtime AI product | robot-control contract
 ```
 
 ## Structure
@@ -32,14 +32,17 @@ agent-reliability | product-ai | robotics-defense | graphics-engine
 | `profile-readme.md` | source draft for `FrogRim/FrogRim` profile README |
 | `.github/workflows/pages.yml` | GitHub Pages deployment workflow |
 
-## Representative Repositories
+## Representative Stories
 
-1. [HaltTrace](https://github.com/FrogRim/halttrace)
+1. Agent Verification Stack: [HaltTrace](https://github.com/FrogRim/halttrace) + [Signature Harness](https://github.com/FrogRim/signature-harness)
 2. [LinguaCall](https://github.com/FrogRim/LinguaCall)
 3. [LLM-First-Robot-Control](https://github.com/FrogRim/LLM-First-Robot-Control)
-4. [ForgeXR](https://github.com/FrogRim/ForgeXR)
-5. [GPU_3DAlgorithm](https://github.com/FrogRim/GPU_3DAlgorithm)
-6. [UE5-ITD-Parser](https://github.com/FrogRim/UE5-ITD-Parser)
+
+## Supporting Repositories
+
+1. [ForgeXR](https://github.com/FrogRim/ForgeXR)
+2. [GPU_3DAlgorithm](https://github.com/FrogRim/GPU_3DAlgorithm)
+3. [UE5-ITD-Parser](https://github.com/FrogRim/UE5-ITD-Parser)
 
 ## Local Check
 
