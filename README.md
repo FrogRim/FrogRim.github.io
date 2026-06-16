@@ -40,9 +40,19 @@ agent-verification | Realtime AI product | robot-control contract
 
 ## Supporting Repositories
 
-1. [ForgeXR](https://github.com/FrogRim/ForgeXR)
+1. [ForgeXR](https://github.com/FrogRim/ForgeXR): Robot Data Forge MVP-2 Rebase harness readiness
 2. [GPU_3DAlgorithm](https://github.com/FrogRim/GPU_3DAlgorithm)
 3. [UE5-ITD-Parser](https://github.com/FrogRim/UE5-ITD-Parser)
+
+## Robot Data Forge Claim Boundary
+
+ForgeXR now shows a stronger robotics data story than the previous MVP-1+ summary:
+
+- MVP-1: learning-ready dataset artifact proof
+- MVP-1+: cross-embodiment adapter lineage and UR file-backed recorded-log proof
+- MVP-2 Rebase: policy A/B harness readiness with baseline/candidate HDF5 exports and schema-only rollout ingest
+
+The portfolio intentionally does not claim policy uplift yet. Current public evidence is `harness_ready=true`, `rollout_ingest_contract_ready=true`, `learning_results_measured=false`, `learning_proven=false`, and `proof_eligible=false`.
 
 ## Local Check
 

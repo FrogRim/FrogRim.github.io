@@ -802,8 +802,8 @@ h3 {
   }
 
   .nav-links {
+    flex-wrap: wrap;
     width: 100%;
-    overflow-x: auto;
   }
 
   .hero-shell {

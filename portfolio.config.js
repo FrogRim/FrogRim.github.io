@@ -34,9 +34,9 @@ window.PORTFOLIO = {
     {
       title: "Robotics / Defense / Systems",
       route: "LLM-First Robot Control -> ForgeXR -> GPU 3D Algorithm",
-      emphasis: "control contract, data trust layer, lineage, geometry risk, performance measurement",
+      emphasis: "control contract, data trust layer, UR lineage, policy A/B harness readiness, performance measurement",
       proof:
-        "LLM을 챗봇이 아니라 JSON control contract로 제한하고, 시뮬레이션·데이터 신뢰 계층·성능 측정으로 시스템 사고를 보여줍니다.",
+        "LLM을 챗봇이 아니라 JSON control contract로 제한하고, Robot Data Forge에서는 UR recorded-log lineage에서 baseline/candidate HDF5와 schema-only rollout ingest까지 닫아 시스템 사고를 보여줍니다.",
     },
     {
       title: "Product AI Engineer",
@@ -84,9 +84,15 @@ window.PORTFOLIO = {
       repo: "https://github.com/FrogRim/GPU_3DAlgorithm",
     },
     {
-      metric: "MVP-1+ 4 adapters",
+      metric: "MVP-2 harness ready",
       project: "Robot Data Forge",
-      meaning: "4개 robot embodiment adapter가 같은 trajectory contract, HDF5 export, trainer smoke gate를 통과",
+      meaning: "UR recorded-log lineage에서 baseline 2 / candidate 1 HDF5, held-out suite manifest, schema-only rollout ingest contract를 생성",
+      repo: "https://github.com/FrogRim/ForgeXR",
+    },
+    {
+      metric: "learning_proven=false",
+      project: "Robot Data Forge",
+      meaning: "policy uplift를 과장하지 않고 harness_ready=true / proof_eligible=false claim boundary를 명시",
       repo: "https://github.com/FrogRim/ForgeXR",
     },
   ],
@@ -103,8 +109,8 @@ window.PORTFOLIO = {
     },
     {
       label: "Robotics / data",
-      items: ["Python", "FastAPI", "HDF5", "Trust Records", "Lineage", "Pytest"],
-      usedFor: "robot data trust layer, curation manifest, UR file-backed lineage, policy A/B harness readiness",
+      items: ["Python", "FastAPI", "HDF5", "Trust Records", "UR Lineage", "Policy A/B Harness", "Pytest"],
+      usedFor: "robot data trust layer, curation manifest, UR file-backed lineage, baseline/candidate HDF5 export, schema-only rollout ingest readiness",
     },
     {
       label: "Graphics / engine",
@@ -228,13 +234,13 @@ window.PORTFOLIO = {
       title: "Robot Data Forge",
       lenses: ["Robotics / Defense", "Product AI"],
       year: "2026",
-      status: "MVP-1+",
+      status: "MVP-2 Rebase",
       repo: "https://github.com/FrogRim/ForgeXR",
-      description: "robot-action trajectory를 replay/action-labelled, task-validated, trainer-loadable dataset artifact와 trust record로 바꾸는 data infrastructure.",
-      problem: "raw trajectory만으로는 학습 가능성, rejected reason, provenance, trainer compatibility 판단 불가",
-      decision: "HMD-first proof를 data trust layer로 reset하고 MVP-1 dataset artifact, MVP-1+ cross-embodiment adapter, UR file-backed lineage를 분리",
-      evidence: "4 accepted/4 rejected, 4 adapters, HDF5/trainer smoke, UR SHA-256 lineage, MVP-2 harness_ready=true/proof_eligible=false",
-      stack: ["FastAPI", "HDF5", "Curation", "Trust Records", "Lineage", "Pytest"],
+      description: "robot-action trajectory를 replay/action-labelled dataset artifact, UR recorded-log lineage, policy A/B harness input으로 바꾸는 robotics data trust layer.",
+      problem: "raw trajectory만으로는 학습 가능성, rejected reason, provenance, trainer compatibility, policy A/B 평가 준비 상태를 판단할 수 없는 문제",
+      decision: "HMD-first proof를 data trust layer로 reset하고, MVP-1 artifact proof -> MVP-1+ embodiment lineage -> MVP-2 UR policy A/B harness readiness로 claim boundary를 단계화",
+      evidence: "harness_ready=true, baseline 2 / candidate 1 HDF5, rollout_ingest_contract_ready=true, lineage source 3 / projected artifacts 7, learning_proven=false",
+      stack: ["FastAPI", "HDF5", "Curation", "Trust Records", "UR Lineage", "Policy A/B Harness", "Pytest"],
       language: "Python",
       color: "#00ff88",
     },
@@ -271,7 +277,7 @@ window.PORTFOLIO = {
     {
       date: "2026",
       title: "Agent reliability와 product AI runtime",
-      text: "HaltTrace, Signature Harness, LinguaCall, Robot Data Forge로 에이전트 실패 관측, 완료 검증, Realtime 음성 UX, 로봇 데이터 신뢰 계층 증거를 공개로 남겼습니다.",
+      text: "HaltTrace, Signature Harness, LinguaCall, Robot Data Forge로 에이전트 실패 관측, 완료 검증, Realtime 음성 UX, UR lineage 기반 로봇 데이터 신뢰 계층 증거를 공개로 남겼습니다.",
     },
     {
       date: "2025",

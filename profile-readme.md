@@ -36,7 +36,7 @@ portfolio = https://frogrim.github.io/
 
 | Repository | What it adds |
 | --- | --- |
-| [Robot Data Forge](https://github.com/FrogRim/ForgeXR) | robot-action trajectory를 HDF5/trainer smoke/lineage/trust record로 닫는 data trust layer |
+| [Robot Data Forge](https://github.com/FrogRim/ForgeXR) | robot-action trajectory를 HDF5/trust record/UR lineage/policy A/B harness readiness로 닫는 data trust layer. 현재 증거는 `harness_ready=true`, `learning_proven=false` |
 | [GPU 3D Algorithm](https://github.com/FrogRim/GPU_3DAlgorithm) | 12,182 triangles scene에서 brute force 847ms -> BVTT 126ms로 줄인 graphics/system benchmark |
 | [UE5 ITD Parser Plugin](https://github.com/FrogRim/UE5-ITD-Parser) | 외부 3D format과 Unreal Static Mesh contract의 불일치를 분석한 engine plugin prototype |
 
