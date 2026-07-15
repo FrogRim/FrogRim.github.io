@@ -4,11 +4,19 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/light.svg">
-    <img src="assets/light.svg" alt="FrogRim - Build wide. Verify deep." width="100%">
+    <img src="assets/light.svg" alt="FrogRim - Build wide. Verify deep." width="760">
   </picture>
 </p>
 
 AI를 많이 쓰는 사람이 아니라, AI가 낸 결과를 시스템으로 구현하고 실패 지점을 검증 가능한 증거로 닫는 개발자입니다.
+
+## AI Workflow Telemetry
+
+<p align="center">
+  <img width="760" src="https://raw.githubusercontent.com/FrogRim/FrogRim/main/cards/ai-usage-combo.svg" alt="AI coding usage telemetry" />
+</p>
+
+Local AI coding logs are summarized with `ccusage` and committed as SVG cards. I treat this as workflow telemetry, not a skill claim: the important part is still whether the output is framed, tested, reviewed, and documented.
 
 <p align="center">
   <a href="https://frogrim.github.io/">
@@ -68,14 +76,6 @@ portfolio = https://frogrim.github.io/
 ![Node.js](https://img.shields.io/badge/Node.js-0b1017?style=flat-square&logo=nodedotjs&logoColor=00FF88)
 ![Unreal Engine](https://img.shields.io/badge/Unreal_Engine-0b1017?style=flat-square&logo=unrealengine&logoColor=FFFFFF)
 ![OpenGL](https://img.shields.io/badge/OpenGL-0b1017?style=flat-square&logo=opengl&logoColor=FF4D8D)
-
-## AI Workflow Telemetry
-
-<p align="center">
-  <img width="100%" src="https://raw.githubusercontent.com/FrogRim/FrogRim/main/cards/ai-usage-combo.svg" alt="AI coding usage telemetry" />
-</p>
-
-Local AI coding logs are summarized with `ccusage` and committed as SVG cards. I treat this as workflow telemetry, not a skill claim: the important part is still whether the output is framed, tested, reviewed, and documented.
 
 ## Contact
 
